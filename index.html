@@ -30,11 +30,18 @@
   .hamb:hover{border-color:var(--blue)}
   .hamb svg{width:18px;height:18px}
   .brand{display:flex;align-items:center;gap:12px}
-  .logo{width:40px;height:40px;background:linear-gradient(135deg,var(--crit),#b23a2f);border-radius:9px;
-    display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:21px;flex-shrink:0}
+  .logo{height:42px;padding:4px 9px;background:#fff;border:1px solid #e6e6e6;border-radius:9px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:var(--shadow)}
+  .logo img{height:100%;width:auto;display:block}
   header h1{font-size:16.5px;font-weight:750;letter-spacing:.2px;color:var(--text)}
   header .sub{font-size:12px;color:var(--muted);margin-top:2px}
   .tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tools-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+  .langsw{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:650}
+  .langsw button{background:none;border:none;color:var(--muted);cursor:pointer;font-family:inherit;font-size:12px;font-weight:650;padding:2px 3px}
+  .langsw button:hover{color:var(--blue)}
+  .langsw button.active{color:var(--crit)}
+  .langsw span{color:var(--muted)}
   .pill{font-size:12px;padding:6px 12px;border-radius:20px;border:1px solid var(--line);background:var(--soft);
     color:var(--text);cursor:pointer;font-weight:600;font-family:inherit}
   .pill:hover{border-color:var(--blue)}
@@ -152,120 +159,125 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <div class="brand">
-      <div class="logo">◄</div>
+      <div class="logo"><img src="shinhan_securities_logo.png" alt="Shinhan Securities logo"></div>
       <div>
-        <h1>Shinhan Securities Vietnam — IT Infrastructure Dashboard</h1>
-        <div class="sub">Tech Valley Vietnam · On-Prem Data Center Assessment · June 2026</div>
+        <h1 data-i18n="hdr_title">Shinhan Securities Vietnam — IT Infrastructure Dashboard</h1>
+        <div class="sub" data-i18n="hdr_sub">Tech Valley Vietnam · On-Prem Data Center Assessment · June 2026</div>
       </div>
     </div>
   </div>
-  <div class="tools">
-    <button class="pill" onclick="toggleTheme()" id="themeBtn">Dark mode</button>
-    <button class="pill" onclick="window.print()">Export PDF</button>
+  <div class="tools-wrap">
+    <div class="langsw" id="langSwitch">
+      <button data-lang="en" class="active">English</button><span>|</span><button data-lang="ko">Korean</button><span>|</span><button data-lang="vi">Vietnamese</button>
+    </div>
+    <div class="tools">
+      <button class="pill" onclick="toggleTheme()" id="themeBtn" data-i18n="btn_dark">Dark mode</button>
+      <button class="pill" onclick="window.print()" data-i18n="btn_export">Export PDF</button>
+    </div>
   </div>
 </header>
 
 <div class="shell" id="shell">
   <aside class="sidebar" id="nav">
-    <div class="grouplbl">Summary</div>
+    <div class="grouplbl" data-i18n="nav_summary">Summary</div>
     <button class="active" data-tab="overview">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-      <span class="lbl">Executive Overview</span></button>
-    <div class="grouplbl">Infrastructure</div>
+      <span class="lbl" data-i18n="nav_overview">Executive Overview</span></button>
+    <div class="grouplbl" data-i18n="nav_infra">Infrastructure</div>
     <button data-tab="compute">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><line x1="7" y1="7.5" x2="7.01" y2="7.5"/><line x1="7" y1="16.5" x2="7.01" y2="16.5"/></svg>
-      <span class="lbl">Compute</span></button>
+      <span class="lbl" data-i18n="nav_compute">Compute</span></button>
     <button data-tab="storage">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
-      <span class="lbl">Storage &amp; SAN</span></button>
+      <span class="lbl" data-i18n="nav_storage">Storage &amp; SAN</span></button>
     <button data-tab="databases">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.6 3.1 3 7 3s7-1.4 7-3V6"/></svg>
-      <span class="lbl">Databases</span></button>
+      <span class="lbl" data-i18n="nav_db">Databases</span></button>
     <button data-tab="apps">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><circle cx="17.5" cy="17.5" r="3.8"/></svg>
-      <span class="lbl">Applications</span></button>
-    <div class="grouplbl">Decisions</div>
+      <span class="lbl" data-i18n="nav_apps">Applications</span></button>
+    <div class="grouplbl" data-i18n="nav_decisions">Decisions</div>
     <button data-tab="risks">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><line x1="12" y1="9" x2="12" y2="14"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      <span class="lbl">Risk Register</span></button>
+      <span class="lbl" data-i18n="nav_risks">Risk Register</span></button>
     <button data-tab="actions">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6h11"/><path d="M10 12h11"/><path d="M10 18h11"/><path d="M3 6l1.4 1.4L7 5"/><path d="M3 12l1.4 1.4L7 11"/><path d="M3 18l1.4 1.4L7 17"/></svg>
-      <span class="lbl">Action Plan</span></button>
+      <span class="lbl" data-i18n="nav_actions">Action Plan</span></button>
   </aside>
 
   <main>
   <!-- ===== OVERVIEW ===== -->
   <section class="tab active" id="overview">
-    <h2 class="sec">Executive Overview</h2>
-    <p class="lead">The whole environment on one screen — how healthy it is, what's running, and the few things that need a decision.</p>
+    <h2 class="sec" data-i18n="nav_overview">Executive Overview</h2>
+    <p class="lead" data-i18n="ov_lead">The whole environment on one screen — how healthy it is, what's running, and the few things that need a decision.</p>
 
     <div class="hero">
       <div class="score-card">
         <div class="gauge"><canvas id="gauge"></canvas>
-          <div class="val"><div class="num">61</div><div class="out">out of 100</div></div>
+          <div class="val"><div class="num">61</div><div class="out" data-i18n="ov_outof100">out of 100</div></div>
         </div>
-        <span class="band" style="background:rgba(232,145,43,.16);color:#b56d12">Needs Attention</span>
-        <div class="score-note">Readiness score = 100 − weighted open risks<br>(3 Critical, 4 High, 3 Medium). Stable today, but action needed.</div>
+        <span class="band" style="background:rgba(232,145,43,.16);color:#b56d12" data-i18n="ov_band">Needs Attention</span>
+        <div class="score-note" data-i18n="ov_scorenote">Readiness score = 100 − weighted open risks<br>(3 Critical, 4 High, 3 Medium). Stable today, but action needed.</div>
       </div>
       <div class="bottomline">
-        <div class="tag">Bottom line — June 2026</div>
-        <h3>The system is stable and trading is running — but three critical items need a decision within 30 days.</h3>
+        <div class="tag" data-i18n="ov_bltag">Bottom line — June 2026</div>
+        <h3 data-i18n="ov_blh3">The system is stable and trading is running — but three critical items need a decision within 30 days.</h3>
         <ul>
-          <li><span class="dot" style="background:var(--crit)"></span><b>Production memory is maxed out</b> — all 3 trading hosts at 90–94% RAM. One host failure could take trading offline.</li>
-          <li><span class="dot" style="background:var(--crit)"></span><b>~54 servers run end-of-life CentOS 7</b> (no security patches since June 2024).</li>
-          <li><span class="dot" style="background:var(--crit)"></span><b>The UAT/test platform is unsupported</b> (VMware ESXi 6.0, end of support since 2020).</li>
-          <li><span class="dot" style="background:var(--high)"></span><b>No disaster-recovery site</b> — a single data-center event would halt trading completely.</li>
+          <li><span class="dot" style="background:var(--crit)"></span><span data-i18n="ov_bl1"><b>Production memory is maxed out</b> — all 3 trading hosts at 90–94% RAM. One host failure could take trading offline.</span></li>
+          <li><span class="dot" style="background:var(--crit)"></span><span data-i18n="ov_bl2"><b>~54 servers run end-of-life CentOS 7</b> (no security patches since June 2024).</span></li>
+          <li><span class="dot" style="background:var(--crit)"></span><span data-i18n="ov_bl3"><b>The UAT/test platform is unsupported</b> (VMware ESXi 6.0, end of support since 2020).</span></li>
+          <li><span class="dot" style="background:var(--high)"></span><span data-i18n="ov_bl4"><b>No disaster-recovery site</b> — a single data-center event would halt trading completely.</span></li>
         </ul>
       </div>
     </div>
 
     <div class="kpis">
-      <div class="kpi blue"><div class="n">8</div><div class="l">Physical Servers</div><div class="s">6 ESXi hosts · 2 Oracle DB</div></div>
-      <div class="kpi blue"><div class="n">174</div><div class="l">Virtual Machines</div><div class="s">127 Production · 47 UAT</div></div>
-      <div class="kpi crit"><div class="n">3</div><div class="l">Critical Issues</div><div class="s">Need action within 30 days</div></div>
-      <div class="kpi high"><div class="n">4</div><div class="l">High Issues</div><div class="s">Action within 30–90 days</div></div>
-      <div class="kpi crit"><div class="n">94%</div><div class="l">Peak Production RAM</div><div class="s">No failover headroom</div></div>
-      <div class="kpi high"><div class="n">166%</div><div class="l">Trading Storage Used</div><div class="s">Oversubscribed — expand</div></div>
+      <div class="kpi blue"><div class="n">8</div><div class="l" data-i18n="ov_kpi1_l">Physical Servers</div><div class="s" data-i18n="ov_kpi1_s">6 ESXi hosts · 2 Oracle DB</div></div>
+      <div class="kpi blue"><div class="n">174</div><div class="l" data-i18n="ov_kpi2_l">Virtual Machines</div><div class="s" data-i18n="ov_kpi2_s">127 Production · 47 UAT</div></div>
+      <div class="kpi crit"><div class="n">3</div><div class="l" data-i18n="ov_kpi3_l">Critical Issues</div><div class="s" data-i18n="ov_kpi3_s">Need action within 30 days</div></div>
+      <div class="kpi high"><div class="n">4</div><div class="l" data-i18n="ov_kpi4_l">High Issues</div><div class="s" data-i18n="ov_kpi4_s">Action within 30–90 days</div></div>
+      <div class="kpi crit"><div class="n">94%</div><div class="l" data-i18n="ov_kpi5_l">Peak Production RAM</div><div class="s" data-i18n="ov_kpi5_s">No failover headroom</div></div>
+      <div class="kpi high"><div class="n">166%</div><div class="l" data-i18n="ov_kpi6_l">Trading Storage Used</div><div class="s" data-i18n="ov_kpi6_s">Oversubscribed — expand</div></div>
     </div>
 
     <div class="grid2">
-      <div class="card"><h4>Where the risk sits</h4><div class="cap">10 open findings by severity</div><div class="chartbox"><canvas id="riskChart"></canvas></div></div>
-      <div class="card"><h4>Server operating systems — support status</h4><div class="cap">Green = supported · Red = end-of-life (no security patches)</div><div class="chartbox"><canvas id="osChart"></canvas></div></div>
+      <div class="card"><h4 data-i18n="ov_c1_h4">Where the risk sits</h4><div class="cap" data-i18n="ov_c1_cap">10 open findings by severity</div><div class="chartbox"><canvas id="riskChart"></canvas></div></div>
+      <div class="card"><h4 data-i18n="ov_c2_h4">Server operating systems — support status</h4><div class="cap" data-i18n="ov_c2_cap">Green = supported · Red = end-of-life (no security patches)</div><div class="chartbox"><canvas id="osChart"></canvas></div></div>
     </div>
-    <div class="insight warn"><span class="em">WATCH</span><div><b>Insight:</b> Around 43% of servers (~68) run software that no longer receives security updates — the single biggest cluster of risk, and the fastest win. A phased move to Oracle Linux 8 clears the largest critical finding.</div></div>
+    <div class="insight warn"><span class="em" data-i18n="em_watch">WATCH</span><div data-i18n="ov_ins1"><b>Insight:</b> Around 43% of servers (~68) run software that no longer receives security updates — the single biggest cluster of risk, and the fastest win. A phased move to Oracle Linux 8 clears the largest critical finding.</div></div>
 
     <div class="grid2">
-      <div class="card"><h4>Host memory load</h4><div class="cap">Every host is in the red zone (&gt;90%). Anything above 90% has no failover headroom.</div><div class="chartbox"><canvas id="ramChart"></canvas></div></div>
-      <div class="card"><h4>Trading storage — how full it really is</h4><div class="cap">Allocated space vs the 100% physical limit</div><div class="chartbox"><canvas id="subChart"></canvas></div></div>
+      <div class="card"><h4 data-i18n="ov_c3_h4">Host memory load</h4><div class="cap" data-i18n="ov_c3_cap">Every host is in the red zone (&gt;90%). Anything above 90% has no failover headroom.</div><div class="chartbox"><canvas id="ramChart"></canvas></div></div>
+      <div class="card"><h4 data-i18n="ov_c4_h4">Trading storage — how full it really is</h4><div class="cap" data-i18n="ov_c4_cap">Allocated space vs the 100% physical limit</div><div class="chartbox"><canvas id="subChart"></canvas></div></div>
     </div>
-    <div class="insight info"><span class="em">NOTE</span><div><b>Insight:</b> The hardware itself is modern and healthy — current HPE Gen10 servers, no faults. Every critical finding is about <b>capacity and lifecycle</b> (memory, storage, OS versions), not broken equipment. These are planned-spend items, not emergency repairs.</div></div>
+    <div class="insight info"><span class="em" data-i18n="em_note">NOTE</span><div data-i18n="ov_ins2"><b>Insight:</b> The hardware itself is modern and healthy — current HPE Gen10 servers, no faults. Every critical finding is about <b>capacity and lifecycle</b> (memory, storage, OS versions), not broken equipment. These are planned-spend items, not emergency repairs.</div></div>
   </section>
 
   <!-- ===== COMPUTE ===== -->
   <section class="tab" id="compute">
-    <h2 class="sec">Compute Infrastructure</h2>
-    <p class="lead">How much room is left on each server, and how the workload is spread.</p>
+    <h2 class="sec" data-i18n="nav_compute">Compute Infrastructure</h2>
+    <p class="lead" data-i18n="cp_lead">How much room is left on each server, and how the workload is spread.</p>
 
     <div class="grid2">
-      <div class="card"><h4>Memory used vs free (GB per host)</h4><div class="cap">The thin light slice is all the spare memory left — production has almost none.</div><div class="chartbox tall"><canvas id="memChart"></canvas></div></div>
-      <div class="card"><h4>Virtual machines per host</h4><div class="cap">127 in production, 47 in UAT</div><div class="chartbox tall"><canvas id="vmChart"></canvas></div></div>
+      <div class="card"><h4 data-i18n="cp_c1_h4">Memory used vs free (GB per host)</h4><div class="cap" data-i18n="cp_c1_cap">The thin light slice is all the spare memory left — production has almost none.</div><div class="chartbox tall"><canvas id="memChart"></canvas></div></div>
+      <div class="card"><h4 data-i18n="cp_c2_h4">Virtual machines per host</h4><div class="cap" data-i18n="cp_c2_cap">127 in production, 47 in UAT</div><div class="chartbox tall"><canvas id="vmChart"></canvas></div></div>
     </div>
-    <div class="insight crit"><span class="em">ACTION</span><div><b>Action needed:</b> All three trading hosts sit at 90–94% memory with no spare host. Add 2 ESXi hosts (N+1) or migrate workloads to a new data centre so a single failure can't take trading down.</div></div>
+    <div class="insight crit"><span class="em" data-i18n="em_action">ACTION</span><div data-i18n="cp_ins"><b>Action needed:</b> All three trading hosts sit at 90–94% memory with no spare host. Add 2 ESXi hosts (N+1) or migrate workloads to a new data centre so a single failure can't take trading down.</div></div>
 
-    <details open><summary>Show detailed host tables</summary>
-      <h3 class="sub">Production hosts — HPE ProLiant DL380 Gen10 (768 GB RAM each)</h3>
+    <details open><summary data-i18n="cp_details">Show detailed host tables</summary>
+      <h3 class="sub" data-i18n="cp_sub1">Production hosts — HPE ProLiant DL380 Gen10 (768 GB RAM each)</h3>
       <div class="tablewrap"><table>
-        <thead><tr><th>Host</th><th>CPU</th><th>ESXi</th><th>CPU Load</th><th>RAM Load</th><th>VMs</th><th>Status</th></tr></thead>
+        <thead><tr><th data-i18n="th_host">Host</th><th data-i18n="th_cpu">CPU</th><th data-i18n="th_esxi">ESXi</th><th data-i18n="th_cpuload">CPU Load</th><th data-i18n="th_ramload">RAM Load</th><th data-i18n="th_vms">VMs</th><th data-i18n="th_status">Status</th></tr></thead>
         <tbody id="prodHosts"></tbody>
       </table></div>
-      <h3 class="sub">UAT / Development hosts — Dell PowerEdge R730 (ESXi 6.0, unsupported)</h3>
+      <h3 class="sub" data-i18n="cp_sub2">UAT / Development hosts — Dell PowerEdge R730 (ESXi 6.0, unsupported)</h3>
       <div class="tablewrap"><table>
-        <thead><tr><th>Host</th><th>CPU</th><th>ESXi</th><th>CPU Load</th><th>RAM Load</th><th>VMs</th><th>Status</th></tr></thead>
+        <thead><tr><th data-i18n="th_host">Host</th><th data-i18n="th_cpu">CPU</th><th data-i18n="th_esxi">ESXi</th><th data-i18n="th_cpuload">CPU Load</th><th data-i18n="th_ramload">RAM Load</th><th data-i18n="th_vms">VMs</th><th data-i18n="th_status">Status</th></tr></thead>
         <tbody id="uatHosts"></tbody>
       </table></div>
-      <h3 class="sub">Physical Oracle Database servers (bare-metal RAC)</h3>
+      <h3 class="sub" data-i18n="cp_sub3">Physical Oracle Database servers (bare-metal RAC)</h3>
       <div class="tablewrap"><table>
-        <thead><tr><th>Server</th><th>Model</th><th>CPU</th><th>RAM</th><th>Management</th><th>iLO Security</th></tr></thead>
+        <thead><tr><th data-i18n="th_server">Server</th><th data-i18n="th_model">Model</th><th data-i18n="th_cpu">CPU</th><th data-i18n="th_ram">RAM</th><th data-i18n="th_mgmt">Management</th><th data-i18n="th_ilosec">iLO Security</th></tr></thead>
         <tbody id="dbHosts"></tbody>
       </table></div>
     </details>
@@ -273,35 +285,35 @@
 
   <!-- ===== STORAGE ===== -->
   <section class="tab" id="storage">
-    <h2 class="sec">Storage &amp; SAN</h2>
-    <p class="lead">Two Dell EMC Unity 380 arrays. One is comfortable; the trading array is overcommitted.</p>
+    <h2 class="sec" data-i18n="nav_storage">Storage &amp; SAN</h2>
+    <p class="lead" data-i18n="st_lead">Two Dell EMC Unity 380 arrays. One is comfortable; the trading array is overcommitted.</p>
 
     <div class="grid2">
-      <div class="card"><h4>Capacity used vs free (TB)</h4><div class="cap">Each array holds 16.3 TB total</div><div class="chartbox"><canvas id="capChart"></canvas></div></div>
-      <div class="card"><h4>Subscription rate vs physical limit</h4><div class="cap">Anything past the 100% line is oversubscribed</div><div class="chartbox"><canvas id="subChart2"></canvas></div></div>
+      <div class="card"><h4 data-i18n="st_c1_h4">Capacity used vs free (TB)</h4><div class="cap" data-i18n="st_c1_cap">Each array holds 16.3 TB total</div><div class="chartbox"><canvas id="capChart"></canvas></div></div>
+      <div class="card"><h4 data-i18n="st_c2_h4">Subscription rate vs physical limit</h4><div class="cap" data-i18n="st_c2_cap">Anything past the 100% line is oversubscribed</div><div class="chartbox"><canvas id="subChart2"></canvas></div></div>
     </div>
-    <div class="insight warn"><span class="em">WATCH</span><div><b>Insight:</b> The trading array (SSV-TRD-STORAGE) is provisioned at 166% — the allocated volumes total more than the physical disk. It works today, but if data keeps growing it can run out of real space. Expand capacity or enable compression/tiering this quarter.</div></div>
+    <div class="insight warn"><span class="em" data-i18n="em_watch">WATCH</span><div data-i18n="st_ins"><b>Insight:</b> The trading array (SSV-TRD-STORAGE) is provisioned at 166% — the allocated volumes total more than the physical disk. It works today, but if data keeps growing it can run out of real space. Expand capacity or enable compression/tiering this quarter.</div></div>
 
-    <details><summary>Show storage &amp; SAN detail tables</summary>
+    <details><summary data-i18n="st_details">Show storage &amp; SAN detail tables</summary>
       <div class="tablewrap"><table>
-        <thead><tr><th>Attribute</th><th>SSV-DB-STORAGE</th><th>SSV-TRD-STORAGE (Trading)</th></tr></thead>
+        <thead><tr><th data-i18n="st_th_attr">Attribute</th><th>SSV-DB-STORAGE</th><th>SSV-TRD-STORAGE (Trading)</th></tr></thead>
         <tbody>
-          <tr><td>Model</td><td>Dell EMC Unity 380</td><td>Dell EMC Unity 380</td></tr>
-          <tr><td>Total Capacity</td><td>16.3 TB</td><td>16.3 TB</td></tr>
-          <tr><td>Free Space</td><td><span class="badge b-ok">12.8 TB (78% free)</span></td><td><span class="badge b-high">5.2 TB (32% free)</span></td></tr>
-          <tr><td>Subscription Rate</td><td><span class="badge b-ok">33% — healthy</span></td><td><span class="badge b-crit">166% — oversubscribed</span></td></tr>
-          <tr><td>FAST Cache</td><td>N/A</td><td>Enabled</td></tr>
-          <tr><td>Health</td><td><span class="badge b-ok">OK</span></td><td><span class="badge b-ok">OK</span></td></tr>
+          <tr><td data-i18n="st_attr_model">Model</td><td>Dell EMC Unity 380</td><td>Dell EMC Unity 380</td></tr>
+          <tr><td data-i18n="st_attr_total">Total Capacity</td><td>16.3 TB</td><td>16.3 TB</td></tr>
+          <tr><td data-i18n="st_attr_free">Free Space</td><td data-i18n="st_freeDB"><span class="badge b-ok">12.8 TB (78% free)</span></td><td data-i18n="st_freeTRD"><span class="badge b-high">5.2 TB (32% free)</span></td></tr>
+          <tr><td data-i18n="st_attr_sub">Subscription Rate</td><td data-i18n="st_subDB"><span class="badge b-ok">33% — healthy</span></td><td data-i18n="st_subTRD"><span class="badge b-crit">166% — oversubscribed</span></td></tr>
+          <tr><td data-i18n="st_attr_fast">FAST Cache</td><td data-i18n="st_na">N/A</td><td data-i18n="st_enabled">Enabled</td></tr>
+          <tr><td data-i18n="st_attr_health">Health</td><td data-i18n="badge_ok_html"><span class="badge b-ok">OK</span></td><td data-i18n="badge_ok_html"><span class="badge b-ok">OK</span></td></tr>
         </tbody>
       </table></div>
-      <h3 class="sub">SAN Fabric — Brocade G610</h3>
+      <h3 class="sub" data-i18n="st_sub_san">SAN Fabric — Brocade G610</h3>
       <div class="tablewrap"><table>
-        <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+        <thead><tr><th data-i18n="st_th_param">Parameter</th><th data-i18n="st_th_value">Value</th></tr></thead>
         <tbody>
-          <tr><td>Switch</td><td>SSV_SAN_SW2 · Brocade G610</td></tr>
-          <tr><td>Fabric OS</td><td>v8.2.1c <span class="badge b-ok">Healthy</span></td></tr>
-          <tr><td>Domain / Role</td><td>2 (0x2) — Principal</td></tr>
-          <tr><td>Management IP</td><td>10.22.102.213</td></tr>
+          <tr><td data-i18n="st_p_switch">Switch</td><td>SSV_SAN_SW2 · Brocade G610</td></tr>
+          <tr><td data-i18n="st_p_fabric">Fabric OS</td><td>v8.2.1c <span class="badge b-ok" data-i18n="badge_healthy">Healthy</span></td></tr>
+          <tr><td data-i18n="st_p_domain">Domain / Role</td><td>2 (0x2) — <span data-i18n="st_principal">Principal</span></td></tr>
+          <tr><td data-i18n="st_p_mgmtip">Management IP</td><td>10.22.102.213</td></tr>
         </tbody>
       </table></div>
     </details>
@@ -309,34 +321,34 @@
 
   <!-- ===== DATABASES ===== -->
   <section class="tab" id="databases">
-    <h2 class="sec">Database Systems</h2>
-    <p class="lead">Oracle is the primary platform (bare-metal RAC for trading). MySQL, MongoDB and MariaDB support specific applications.</p>
+    <h2 class="sec" data-i18n="nav_db">Database Systems</h2>
+    <p class="lead" data-i18n="db_lead">Oracle is the primary platform (bare-metal RAC for trading). MySQL, MongoDB and MariaDB support specific applications.</p>
     <div class="tablewrap"><table>
-      <thead><tr><th>Database</th><th>Version / Role</th><th>Infrastructure</th><th>Workload</th><th>Status</th></tr></thead>
+      <thead><tr><th data-i18n="th_database">Database</th><th data-i18n="th_verrole">Version / Role</th><th data-i18n="th_infra">Infrastructure</th><th data-i18n="th_workload">Workload</th><th data-i18n="th_status">Status</th></tr></thead>
       <tbody id="dbTable"></tbody>
     </table></div>
   </section>
 
   <!-- ===== APPS ===== -->
   <section class="tab" id="apps">
-    <h2 class="sec">Application Landscape</h2>
-    <p class="lead">What the environment runs, at a glance — then the searchable detail.</p>
+    <h2 class="sec" data-i18n="nav_apps">Application Landscape</h2>
+    <p class="lead" data-i18n="ap_lead">What the environment runs, at a glance — then the searchable detail.</p>
 
     <div class="grid2">
-      <div class="card"><h4>Applications by business area</h4><div class="cap">53 application groups in total</div><div class="chartbox"><canvas id="appAreaChart"></canvas></div></div>
-      <div class="card"><h4>By business criticality</h4><div class="cap">How many directly support trading</div><div class="chartbox"><canvas id="appCritChart"></canvas></div></div>
+      <div class="card"><h4 data-i18n="ap_c1_h4">Applications by business area</h4><div class="cap" data-i18n="ap_c1_cap">53 application groups in total</div><div class="chartbox"><canvas id="appAreaChart"></canvas></div></div>
+      <div class="card"><h4 data-i18n="ap_c2_h4">By business criticality</h4><div class="cap" data-i18n="ap_c2_cap">How many directly support trading</div><div class="chartbox"><canvas id="appCritChart"></canvas></div></div>
     </div>
-    <div class="insight info"><span class="em">NOTE</span><div><b>Insight:</b> 10 application groups are business-critical (order gateways, trading and FIX systems). Several still run on end-of-life CentOS 7 — they should lead the OS-migration queue.</div></div>
+    <div class="insight info"><span class="em" data-i18n="em_note">NOTE</span><div data-i18n="ap_ins"><b>Insight:</b> 10 application groups are business-critical (order gateways, trading and FIX systems). Several still run on end-of-life CentOS 7 — they should lead the OS-migration queue.</div></div>
 
-    <details><summary>Search the full application inventory</summary>
+    <details><summary data-i18n="ap_details">Search the full application inventory</summary>
       <div class="controls" style="margin-top:12px">
-        <input id="appSearch" type="text" placeholder="Search applications, VMs, descriptions…">
-        <select id="catFilter"><option value="">All Areas</option><option>Trading &amp; Market Data</option><option>Banking Gateway</option><option>Business &amp; Support</option><option>Security &amp; Infrastructure</option></select>
-        <select id="critFilter"><option value="">All Criticality</option><option>CRITICAL</option><option>HIGH</option><option>—</option></select>
+        <input id="appSearch" type="text" data-i18n-ph="ap_search_ph" placeholder="Search applications, VMs, descriptions…">
+        <select id="catFilter"><option value="" data-i18n="ap_all_areas">All Areas</option><option value="trading" data-i18n="area_trading">Trading &amp; Market Data</option><option value="banking" data-i18n="area_banking">Banking Gateway</option><option value="business" data-i18n="area_business">Business &amp; Support</option><option value="security" data-i18n="area_security">Security &amp; Infrastructure</option></select>
+        <select id="critFilter"><option value="" data-i18n="ap_all_crit">All Criticality</option><option value="CRITICAL" data-i18n="badge_critical">CRITICAL</option><option value="HIGH" data-i18n="badge_high">HIGH</option><option value="—">—</option></select>
         <span class="count" id="appCount"></span>
       </div>
       <div class="tablewrap"><table>
-        <thead><tr><th>Application / VM</th><th>Area</th><th>OS</th><th>Resources</th><th>Criticality</th><th>Description</th></tr></thead>
+        <thead><tr><th data-i18n="th_appvm">Application / VM</th><th data-i18n="th_area">Area</th><th data-i18n="th_os">OS</th><th data-i18n="th_resources">Resources</th><th data-i18n="th_criticality">Criticality</th><th data-i18n="th_description">Description</th></tr></thead>
         <tbody id="appTable"></tbody>
       </table></div>
     </details>
@@ -344,31 +356,31 @@
 
   <!-- ===== RISKS ===== -->
   <section class="tab" id="risks">
-    <h2 class="sec">Risk Register</h2>
-    <p class="lead">Every identified issue, ranked by business impact.</p>
+    <h2 class="sec" data-i18n="nav_risks">Risk Register</h2>
+    <p class="lead" data-i18n="rk_lead">Every identified issue, ranked by business impact.</p>
     <div class="grid2">
-      <div class="card"><h4>Risks by priority</h4><div class="cap">3 Critical · 4 High · 3 Medium</div><div class="chartbox"><canvas id="riskTabChart"></canvas></div></div>
-      <div class="card"><h4>Risks by theme</h4><div class="cap">What kind of gap each risk represents</div><div class="chartbox"><canvas id="riskThemeChart"></canvas></div></div>
+      <div class="card"><h4 data-i18n="rk_c1_h4">Risks by priority</h4><div class="cap" data-i18n="rk_c1_cap">3 Critical · 4 High · 3 Medium</div><div class="chartbox"><canvas id="riskTabChart"></canvas></div></div>
+      <div class="card"><h4 data-i18n="rk_c2_h4">Risks by theme</h4><div class="cap" data-i18n="rk_c2_cap">What kind of gap each risk represents</div><div class="chartbox"><canvas id="riskThemeChart"></canvas></div></div>
     </div>
     <div class="controls">
-      <select id="riskFilter"><option value="">All Priorities</option><option>CRITICAL</option><option>HIGH</option><option>MEDIUM</option></select>
+      <select id="riskFilter"><option value="" data-i18n="rk_all_prio">All Priorities</option><option value="CRITICAL" data-i18n="badge_critical">CRITICAL</option><option value="HIGH" data-i18n="badge_high">HIGH</option><option value="MEDIUM" data-i18n="badge_medium">MEDIUM</option></select>
       <span class="count" id="riskCount"></span>
     </div>
     <div class="tablewrap"><table>
-      <thead><tr><th>ID</th><th>Risk</th><th>Affected</th><th>Business Impact</th><th>Priority</th></tr></thead>
+      <thead><tr><th data-i18n="th_id">ID</th><th data-i18n="th_risk">Risk</th><th data-i18n="th_affected">Affected</th><th data-i18n="th_bizimpact">Business Impact</th><th data-i18n="th_priority">Priority</th></tr></thead>
       <tbody id="riskTable"></tbody>
     </table></div>
   </section>
 
   <!-- ===== ACTIONS ===== -->
   <section class="tab" id="actions">
-    <h2 class="sec">Recommended Action Plan</h2>
-    <p class="lead">What to do, in what order, and who owns it. Grouped by timeframe.</p>
+    <h2 class="sec" data-i18n="nav_actions">Recommended Action Plan</h2>
+    <p class="lead" data-i18n="ac_lead">What to do, in what order, and who owns it. Grouped by timeframe.</p>
     <div id="recs"></div>
   </section>
 
   <footer class="foot">
-    <span class="by">Serviced by</span>
+    <span class="by" data-i18n="foot_by">Analysis by</span>
     <span class="tvchip" title="Tech Valley — Professional Digital Service">
       <svg viewBox="0 0 360 104" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tech Valley — Professional Digital Service">
         <!-- red folded chevron mark -->
@@ -401,71 +413,545 @@ const dbHosts=[
   {n:"DB01",m:"HPE ProLiant DL380 Gen10",cpu:"2× Xeon Gold 5215 · 20C",ram:"512 GB",mg:"HPE iLO 5 v2.41"},
   {n:"DB02",m:"HPE ProLiant DL380 Gen10",cpu:"2× Xeon Gold 5215 · 20C",ram:"512 GB",mg:"HPE iLO 5 v2.41"},
 ];
-const dbs=[
+const eolOS=["CentOS 7","CentOS 9","Windows 10","Windows Server 2012","Oracle Linux 7","CentOS 8"];
+
+/* ---- language state ---- */
+let LANG='en';
+
+/* ---- static UI dictionary ---- */
+const I18N={
+en:{
+  hdr_title:"Shinhan Securities Vietnam — IT Infrastructure Dashboard",
+  hdr_sub:"Tech Valley Vietnam · On-Prem Data Center Assessment · June 2026",
+  btn_dark:"Dark mode",btn_light:"Light mode",btn_export:"Export PDF",
+  nav_summary:"Summary",nav_overview:"Executive Overview",nav_infra:"Infrastructure",nav_compute:"Compute",
+  nav_storage:"Storage &amp; SAN",nav_db:"Databases",nav_apps:"Applications",nav_decisions:"Decisions",
+  nav_risks:"Risk Register",nav_actions:"Action Plan",
+  ov_lead:"The whole environment on one screen — how healthy it is, what's running, and the few things that need a decision.",
+  ov_outof100:"out of 100",ov_band:"Needs Attention",
+  ov_scorenote:"Readiness score = 100 − weighted open risks<br>(3 Critical, 4 High, 3 Medium). Stable today, but action needed.",
+  ov_bltag:"Bottom line — June 2026",
+  ov_blh3:"The system is stable and trading is running — but three critical items need a decision within 30 days.",
+  ov_bl1:"<b>Production memory is maxed out</b> — all 3 trading hosts at 90–94% RAM. One host failure could take trading offline.",
+  ov_bl2:"<b>~54 servers run end-of-life CentOS 7</b> (no security patches since June 2024).",
+  ov_bl3:"<b>The UAT/test platform is unsupported</b> (VMware ESXi 6.0, end of support since 2020).",
+  ov_bl4:"<b>No disaster-recovery site</b> — a single data-center event would halt trading completely.",
+  ov_kpi1_l:"Physical Servers",ov_kpi1_s:"6 ESXi hosts · 2 Oracle DB",
+  ov_kpi2_l:"Virtual Machines",ov_kpi2_s:"127 Production · 47 UAT",
+  ov_kpi3_l:"Critical Issues",ov_kpi3_s:"Need action within 30 days",
+  ov_kpi4_l:"High Issues",ov_kpi4_s:"Action within 30–90 days",
+  ov_kpi5_l:"Peak Production RAM",ov_kpi5_s:"No failover headroom",
+  ov_kpi6_l:"Trading Storage Used",ov_kpi6_s:"Oversubscribed — expand",
+  ov_c1_h4:"Where the risk sits",ov_c1_cap:"10 open findings by severity",
+  ov_c2_h4:"Server operating systems — support status",ov_c2_cap:"Green = supported · Red = end-of-life (no security patches)",
+  ov_c3_h4:"Host memory load",ov_c3_cap:"Every host is in the red zone (&gt;90%). Anything above 90% has no failover headroom.",
+  ov_c4_h4:"Trading storage — how full it really is",ov_c4_cap:"Allocated space vs the 100% physical limit",
+  ov_ins1:"<b>Insight:</b> Around 43% of servers (~68) run software that no longer receives security updates — the single biggest cluster of risk, and the fastest win. A phased move to Oracle Linux 8 clears the largest critical finding.",
+  ov_ins2:"<b>Insight:</b> The hardware itself is modern and healthy — current HPE Gen10 servers, no faults. Every critical finding is about <b>capacity and lifecycle</b> (memory, storage, OS versions), not broken equipment. These are planned-spend items, not emergency repairs.",
+  em_watch:"WATCH",em_action:"ACTION",em_note:"NOTE",
+  cp_lead:"How much room is left on each server, and how the workload is spread.",
+  cp_c1_h4:"Memory used vs free (GB per host)",cp_c1_cap:"The thin light slice is all the spare memory left — production has almost none.",
+  cp_c2_h4:"Virtual machines per host",cp_c2_cap:"127 in production, 47 in UAT",
+  cp_ins:"<b>Action needed:</b> All three trading hosts sit at 90–94% memory with no spare host. Add 2 ESXi hosts (N+1) or migrate workloads to a new data centre so a single failure can't take trading down.",
+  cp_details:"Show detailed host tables",
+  cp_sub1:"Production hosts — HPE ProLiant DL380 Gen10 (768 GB RAM each)",
+  cp_sub2:"UAT / Development hosts — Dell PowerEdge R730 (ESXi 6.0, unsupported)",
+  cp_sub3:"Physical Oracle Database servers (bare-metal RAC)",
+  th_host:"Host",th_cpu:"CPU",th_esxi:"ESXi",th_cpuload:"CPU Load",th_ramload:"RAM Load",th_vms:"VMs",th_status:"Status",
+  th_server:"Server",th_model:"Model",th_ram:"RAM",th_mgmt:"Management",th_ilosec:"iLO Security",
+  st_healthy:"Healthy",st_memcrit:"Memory critical",st_unsupported:"Unsupported",
+  badge_hardening:"Hardening recommended",
+  st_lead:"Two Dell EMC Unity 380 arrays. One is comfortable; the trading array is overcommitted.",
+  st_c1_h4:"Capacity used vs free (TB)",st_c1_cap:"Each array holds 16.3 TB total",
+  st_c2_h4:"Subscription rate vs physical limit",st_c2_cap:"Anything past the 100% line is oversubscribed",
+  st_ins:"<b>Insight:</b> The trading array (SSV-TRD-STORAGE) is provisioned at 166% — the allocated volumes total more than the physical disk. It works today, but if data keeps growing it can run out of real space. Expand capacity or enable compression/tiering this quarter.",
+  st_details:"Show storage &amp; SAN detail tables",
+  st_th_attr:"Attribute",st_attr_model:"Model",st_attr_total:"Total Capacity",st_attr_free:"Free Space",
+  st_attr_sub:"Subscription Rate",st_attr_fast:"FAST Cache",st_attr_health:"Health",
+  st_freeDB:'<span class="badge b-ok">12.8 TB (78% free)</span>',
+  st_freeTRD:'<span class="badge b-high">5.2 TB (32% free)</span>',
+  st_subDB:'<span class="badge b-ok">33% — healthy</span>',
+  st_subTRD:'<span class="badge b-crit">166% — oversubscribed</span>',
+  st_enabled:"Enabled",st_na:"N/A",
+  badge_ok_html:'<span class="badge b-ok">OK</span>',badge_healthy:"Healthy",
+  st_sub_san:"SAN Fabric — Brocade G610",st_th_param:"Parameter",st_th_value:"Value",
+  st_p_switch:"Switch",st_p_fabric:"Fabric OS",st_p_domain:"Domain / Role",st_p_mgmtip:"Management IP",
+  st_principal:"Principal",
+  db_lead:"Oracle is the primary platform (bare-metal RAC for trading). MySQL, MongoDB and MariaDB support specific applications.",
+  th_database:"Database",th_verrole:"Version / Role",th_infra:"Infrastructure",th_workload:"Workload",
+  ap_lead:"What the environment runs, at a glance — then the searchable detail.",
+  ap_c1_h4:"Applications by business area",ap_c1_cap:"53 application groups in total",
+  ap_c2_h4:"By business criticality",ap_c2_cap:"How many directly support trading",
+  ap_ins:"<b>Insight:</b> 10 application groups are business-critical (order gateways, trading and FIX systems). Several still run on end-of-life CentOS 7 — they should lead the OS-migration queue.",
+  ap_details:"Search the full application inventory",
+  ap_search_ph:"Search applications, VMs, descriptions…",
+  ap_all_areas:"All Areas",ap_all_crit:"All Criticality",
+  area_trading:"Trading &amp; Market Data",area_banking:"Banking Gateway",area_business:"Business &amp; Support",area_security:"Security &amp; Infrastructure",
+  th_appvm:"Application / VM",th_area:"Area",th_os:"OS",th_resources:"Resources",th_criticality:"Criticality",th_description:"Description",
+  ap_nomatch:"No matching applications.",ap_count_tpl:"{n} of {t} entries",
+  rk_lead:"Every identified issue, ranked by business impact.",
+  rk_c1_h4:"Risks by priority",rk_c1_cap:"3 Critical · 4 High · 3 Medium",
+  rk_c2_h4:"Risks by theme",rk_c2_cap:"What kind of gap each risk represents",
+  rk_all_prio:"All Priorities",
+  rk_theme_capacity:"Capacity",rk_theme_lifecycle:"Lifecycle / EOL",rk_theme_resilience:"Resilience",rk_theme_security:"Security",
+  th_id:"ID",th_risk:"Risk",th_affected:"Affected",th_bizimpact:"Business Impact",th_priority:"Priority",
+  rk_count_tpl:"{n} of {t} risks",
+  ac_lead:"What to do, in what order, and who owns it. Grouped by timeframe.",
+  ac_owner:"Owner:",ac_effort:"Effort:",
+  foot_by:"Analysis by",
+  badge_critical:"CRITICAL",badge_high:"HIGH",badge_medium:"MEDIUM",badge_ok:"OK",badge_risk:"RISK",
+  ch_critical:"Critical",ch_high:"High",ch_medium:"Medium",ch_standard:"Standard",
+  ch_supported:"Supported",ch_eol:"End-of-life (no patches)",
+  ch_dbstorage:"DB storage",ch_tradingstorage:"Trading storage",
+  ch_subscribed:"Subscribed",ch_physlimit:"Physical limit (100%)",
+  ch_used:"Used",ch_free:"Free",
+  ch_pctmemused:"% memory used",ch_pctsubscribed:"% subscribed",
+},
+ko:{
+  hdr_title:"신한금융투자 베트남 — IT 인프라 대시보드",
+  hdr_sub:"Tech Valley Vietnam · 온프레미스 데이터센터 평가 · 2026년 6월",
+  btn_dark:"다크 모드",btn_light:"라이트 모드",btn_export:"PDF 내보내기",
+  nav_summary:"요약",nav_overview:"경영진 개요",nav_infra:"인프라",nav_compute:"컴퓨팅",
+  nav_storage:"스토리지 &amp; SAN",nav_db:"데이터베이스",nav_apps:"애플리케이션",nav_decisions:"의사결정",
+  nav_risks:"리스크 관리대장",nav_actions:"실행 계획",
+  ov_lead:"전체 환경을 한 화면에서 확인합니다 — 얼마나 건강한지, 무엇이 운영되고 있는지, 그리고 의사결정이 필요한 몇 가지 사항까지.",
+  ov_outof100:"100점 만점",ov_band:"주의 필요",
+  ov_scorenote:"준비도 점수 = 100 − 가중 미해결 리스크<br>(심각 3건, 높음 4건, 중간 3건). 현재는 안정적이나 조치가 필요합니다.",
+  ov_bltag:"핵심 요약 — 2026년 6월",
+  ov_blh3:"시스템은 안정적이며 트레이딩은 정상 운영 중입니다 — 다만 30일 이내에 결정이 필요한 3가지 심각한 사안이 있습니다.",
+  ov_bl1:"<b>운영 환경 메모리가 한계치에 도달</b> — 3대의 트레이딩 호스트 모두 RAM 사용률 90–94%. 호스트 하나만 장애가 나도 트레이딩이 중단될 수 있습니다.",
+  ov_bl2:"<b>약 54대의 서버가 지원 종료된 CentOS 7을 사용</b> 중입니다(2024년 6월 이후 보안 패치 없음).",
+  ov_bl3:"<b>UAT/테스트 플랫폼이 지원 종료 상태</b>입니다(VMware ESXi 6.0, 2020년 지원 종료).",
+  ov_bl4:"<b>재해복구(DR) 사이트 부재</b> — 데이터센터에 문제가 생기면 트레이딩이 완전히 중단됩니다.",
+  ov_kpi1_l:"물리 서버",ov_kpi1_s:"ESXi 호스트 6대 · Oracle DB 2대",
+  ov_kpi2_l:"가상머신",ov_kpi2_s:"운영 127대 · UAT 47대",
+  ov_kpi3_l:"심각 이슈",ov_kpi3_s:"30일 이내 조치 필요",
+  ov_kpi4_l:"높음 이슈",ov_kpi4_s:"30~90일 이내 조치",
+  ov_kpi5_l:"운영 환경 최대 RAM 사용률",ov_kpi5_s:"페일오버 여유 없음",
+  ov_kpi6_l:"트레이딩 스토리지 사용률",ov_kpi6_s:"과다 할당 — 확장 필요",
+  ov_c1_h4:"리스크가 집중된 영역",ov_c1_cap:"심각도별 미해결 발견사항 10건",
+  ov_c2_h4:"서버 운영체제 — 지원 상태",ov_c2_cap:"초록 = 지원 중 · 빨강 = 지원 종료(보안 패치 없음)",
+  ov_c3_h4:"호스트 메모리 사용률",ov_c3_cap:"모든 호스트가 위험 구간(90% 초과)에 있습니다. 90%를 초과하면 페일오버 여유가 없습니다.",
+  ov_c4_h4:"트레이딩 스토리지 — 실제 사용률",ov_c4_cap:"할당 공간 대비 물리적 한계(100%)",
+  ov_ins1:"<b>인사이트:</b> 서버의 약 43%(약 68대)가 더 이상 보안 업데이트를 받지 못하는 소프트웨어를 사용 중입니다 — 가장 큰 리스크 군집이자 가장 빠르게 해결할 수 있는 항목입니다. Oracle Linux 8로의 단계적 전환으로 가장 큰 심각 항목을 해소할 수 있습니다.",
+  ov_ins2:"<b>인사이트:</b> 하드웨어 자체는 최신이며 이상이 없습니다 — 최신 HPE Gen10 서버, 장애 없음. 모든 심각 항목은 장비 고장이 아니라 <b>용량과 수명주기</b>(메모리, 스토리지, OS 버전)에 관한 것입니다. 이는 긴급 수리가 아니라 계획된 투자 항목입니다.",
+  em_watch:"주의",em_action:"조치",em_note:"참고",
+  cp_lead:"각 서버에 남은 여유 공간과 워크로드 분산 현황입니다.",
+  cp_c1_h4:"메모리 사용량 대비 여유량(호스트별 GB)",cp_c1_cap:"밝은 얇은 부분이 남은 여유 메모리입니다 — 운영 환경은 거의 남아있지 않습니다.",
+  cp_c2_h4:"호스트별 가상머신 수",cp_c2_cap:"운영 127대, UAT 47대",
+  cp_ins:"<b>조치 필요:</b> 3대의 트레이딩 호스트 모두 메모리 사용률 90–94%이며 여유 호스트가 없습니다. ESXi 호스트 2대를 추가(N+1)하거나 신규 데이터센터로 워크로드를 이전하여 단일 장애로 트레이딩이 중단되지 않도록 해야 합니다.",
+  cp_details:"상세 호스트 표 보기",
+  cp_sub1:"운영 호스트 — HPE ProLiant DL380 Gen10(각 768GB RAM)",
+  cp_sub2:"UAT/개발 호스트 — Dell PowerEdge R730(ESXi 6.0, 지원 종료)",
+  cp_sub3:"물리 Oracle 데이터베이스 서버(베어메탈 RAC)",
+  th_host:"호스트",th_cpu:"CPU",th_esxi:"ESXi",th_cpuload:"CPU 사용률",th_ramload:"RAM 사용률",th_vms:"가상머신",th_status:"상태",
+  th_server:"서버",th_model:"모델",th_ram:"RAM",th_mgmt:"관리",th_ilosec:"iLO 보안",
+  st_healthy:"정상",st_memcrit:"메모리 위험",st_unsupported:"지원 종료",
+  badge_hardening:"보안 강화 권장",
+  st_lead:"Dell EMC Unity 380 스토리지 배열 2대 — 하나는 여유가 있고, 트레이딩용 배열은 과다 할당 상태입니다.",
+  st_c1_h4:"용량 사용량 대비 여유(TB)",st_c1_cap:"각 배열의 총 용량은 16.3TB",
+  st_c2_h4:"구독률 대비 물리적 한계",st_c2_cap:"100% 선을 넘으면 과다 할당 상태입니다",
+  st_ins:"<b>인사이트:</b> 트레이딩 배열(SSV-TRD-STORAGE)은 166%로 프로비저닝되어 있습니다 — 할당된 볼륨 총합이 실제 디스크 용량을 초과합니다. 현재는 문제없이 동작하지만 데이터가 계속 늘어나면 실제 공간이 부족해질 수 있습니다. 이번 분기 내에 용량을 확장하거나 압축/티어링을 활성화해야 합니다.",
+  st_details:"스토리지 및 SAN 상세 표 보기",
+  st_th_attr:"속성",st_attr_model:"모델",st_attr_total:"총 용량",st_attr_free:"여유 공간",
+  st_attr_sub:"구독률",st_attr_fast:"FAST 캐시",st_attr_health:"상태",
+  st_freeDB:'<span class="badge b-ok">12.8 TB(78% 여유)</span>',
+  st_freeTRD:'<span class="badge b-high">5.2 TB(32% 여유)</span>',
+  st_subDB:'<span class="badge b-ok">33% — 양호</span>',
+  st_subTRD:'<span class="badge b-crit">166% — 과다 할당</span>',
+  st_enabled:"사용",st_na:"해당 없음",
+  badge_ok_html:'<span class="badge b-ok">정상</span>',badge_healthy:"정상",
+  st_sub_san:"SAN 패브릭 — Brocade G610",st_th_param:"매개변수",st_th_value:"값",
+  st_p_switch:"스위치",st_p_fabric:"패브릭 OS",st_p_domain:"도메인 / 역할",st_p_mgmtip:"관리 IP",
+  st_principal:"주 스위치(Principal)",
+  db_lead:"Oracle이 주력 플랫폼입니다(트레이딩용 베어메탈 RAC). MySQL, MongoDB, MariaDB는 특정 애플리케이션을 지원합니다.",
+  th_database:"데이터베이스",th_verrole:"버전 / 역할",th_infra:"인프라",th_workload:"워크로드",
+  ap_lead:"환경에서 실행 중인 항목을 한눈에 보고, 이후 검색 가능한 상세 정보를 확인하세요.",
+  ap_c1_h4:"업무 영역별 애플리케이션",ap_c1_cap:"총 53개 애플리케이션 그룹",
+  ap_c2_h4:"업무 중요도별",ap_c2_cap:"트레이딩을 직접 지원하는 수",
+  ap_ins:"<b>인사이트:</b> 10개의 애플리케이션 그룹이 업무 필수(주문 게이트웨이, 트레이딩 및 FIX 시스템)로 분류됩니다. 이 중 일부는 아직 지원 종료된 CentOS 7에서 운영 중이므로 OS 마이그레이션 우선순위에 두어야 합니다.",
+  ap_details:"전체 애플리케이션 목록 검색",
+  ap_search_ph:"애플리케이션, VM, 설명 검색…",
+  ap_all_areas:"전체 영역",ap_all_crit:"전체 중요도",
+  area_trading:"트레이딩 및 시장 데이터",area_banking:"뱅킹 게이트웨이",area_business:"업무 지원",area_security:"보안 및 인프라",
+  th_appvm:"애플리케이션 / VM",th_area:"영역",th_os:"OS",th_resources:"리소스",th_criticality:"중요도",th_description:"설명",
+  ap_nomatch:"일치하는 애플리케이션이 없습니다.",ap_count_tpl:"{t}개 중 {n}개 항목",
+  rk_lead:"식별된 모든 이슈를 비즈니스 영향도 순으로 정리했습니다.",
+  rk_c1_h4:"우선순위별 리스크",rk_c1_cap:"심각 3 · 높음 4 · 중간 3",
+  rk_c2_h4:"유형별 리스크",rk_c2_cap:"각 리스크가 나타내는 격차 유형",
+  rk_all_prio:"전체 우선순위",
+  rk_theme_capacity:"용량",rk_theme_lifecycle:"수명주기 / EOL",rk_theme_resilience:"복원력",rk_theme_security:"보안",
+  th_id:"ID",th_risk:"리스크",th_affected:"영향 대상",th_bizimpact:"비즈니스 영향",th_priority:"우선순위",
+  rk_count_tpl:"{t}건 중 {n}건",
+  ac_lead:"무엇을, 어떤 순서로, 누가 담당하는지 — 기간별로 정리했습니다.",
+  ac_owner:"담당:",ac_effort:"소요:",
+  foot_by:"분석 제공",
+  badge_critical:"심각",badge_high:"높음",badge_medium:"중간",badge_ok:"정상",badge_risk:"위험",
+  ch_critical:"심각",ch_high:"높음",ch_medium:"중간",ch_standard:"표준",
+  ch_supported:"지원됨",ch_eol:"지원 종료(패치 없음)",
+  ch_dbstorage:"DB 스토리지",ch_tradingstorage:"트레이딩 스토리지",
+  ch_subscribed:"구독됨",ch_physlimit:"물리적 한계(100%)",
+  ch_used:"사용",ch_free:"여유",
+  ch_pctmemused:"% 메모리 사용",ch_pctsubscribed:"% 구독됨",
+},
+vi:{
+  hdr_title:"Shinhan Securities Việt Nam — Bảng điều khiển Hạ tầng CNTT",
+  hdr_sub:"Tech Valley Vietnam · Đánh giá Trung tâm dữ liệu On-Prem · Tháng 6/2026",
+  btn_dark:"Chế độ tối",btn_light:"Chế độ sáng",btn_export:"Xuất PDF",
+  nav_summary:"Tổng quan",nav_overview:"Tổng quan điều hành",nav_infra:"Hạ tầng",nav_compute:"Điện toán",
+  nav_storage:"Lưu trữ &amp; SAN",nav_db:"Cơ sở dữ liệu",nav_apps:"Ứng dụng",nav_decisions:"Quyết định",
+  nav_risks:"Sổ đăng ký rủi ro",nav_actions:"Kế hoạch hành động",
+  ov_lead:"Toàn bộ môi trường trên một màn hình — mức độ ổn định, những gì đang vận hành, và một vài vấn đề cần ra quyết định.",
+  ov_outof100:"trên thang 100",ov_band:"Cần chú ý",
+  ov_scorenote:"Điểm sẵn sàng = 100 − rủi ro tồn đọng theo trọng số<br>(3 Nghiêm trọng, 4 Cao, 3 Trung bình). Hiện ổn định nhưng cần hành động.",
+  ov_bltag:"Kết luận chính — Tháng 6/2026",
+  ov_blh3:"Hệ thống ổn định và giao dịch vẫn đang vận hành — nhưng có ba vấn đề nghiêm trọng cần được quyết định trong vòng 30 ngày.",
+  ov_bl1:"<b>Bộ nhớ production đã tối đa</b> — cả 3 host trading đều ở mức RAM 90–94%. Chỉ một host gặp sự cố cũng có thể khiến giao dịch ngừng hoạt động.",
+  ov_bl2:"<b>Khoảng 54 máy chủ đang chạy CentOS 7 đã hết hỗ trợ</b> (không có bản vá bảo mật từ tháng 6/2024).",
+  ov_bl3:"<b>Nền tảng UAT/kiểm thử đã hết hỗ trợ</b> (VMware ESXi 6.0, hết hỗ trợ từ năm 2020).",
+  ov_bl4:"<b>Không có site khắc phục thảm họa (DR)</b> — một sự cố tại trung tâm dữ liệu duy nhất sẽ khiến giao dịch ngừng hoàn toàn.",
+  ov_kpi1_l:"Máy chủ vật lý",ov_kpi1_s:"6 host ESXi · 2 máy chủ Oracle DB",
+  ov_kpi2_l:"Máy ảo",ov_kpi2_s:"127 Production · 47 UAT",
+  ov_kpi3_l:"Vấn đề nghiêm trọng",ov_kpi3_s:"Cần xử lý trong 30 ngày",
+  ov_kpi4_l:"Vấn đề mức cao",ov_kpi4_s:"Xử lý trong 30–90 ngày",
+  ov_kpi5_l:"RAM Production cao nhất",ov_kpi5_s:"Không còn dư địa dự phòng",
+  ov_kpi6_l:"Dung lượng lưu trữ giao dịch đã dùng",ov_kpi6_s:"Vượt mức cấp phát — cần mở rộng",
+  ov_c1_h4:"Rủi ro tập trung ở đâu",ov_c1_cap:"10 phát hiện tồn đọng theo mức độ nghiêm trọng",
+  ov_c2_h4:"Hệ điều hành máy chủ — tình trạng hỗ trợ",ov_c2_cap:"Xanh = còn hỗ trợ · Đỏ = hết hỗ trợ (không còn vá bảo mật)",
+  ov_c3_h4:"Tải bộ nhớ host",ov_c3_cap:"Mọi host đều ở vùng đỏ (&gt;90%). Trên 90% nghĩa là không còn dư địa dự phòng.",
+  ov_c4_h4:"Lưu trữ giao dịch — mức độ đầy thực tế",ov_c4_cap:"Dung lượng đã cấp phát so với giới hạn vật lý 100%",
+  ov_ins1:"<b>Nhận định:</b> Khoảng 43% máy chủ (~68 máy) đang chạy phần mềm không còn nhận cập nhật bảo mật — đây là nhóm rủi ro lớn nhất nhưng cũng dễ xử lý nhanh nhất. Việc chuyển đổi theo giai đoạn sang Oracle Linux 8 sẽ giải quyết phát hiện nghiêm trọng lớn nhất.",
+  ov_ins2:"<b>Nhận định:</b> Bản thân phần cứng vẫn hiện đại và hoạt động tốt — máy chủ HPE Gen10 hiện tại, không có lỗi. Mọi phát hiện nghiêm trọng đều liên quan đến <b>dung lượng và vòng đời</b> (bộ nhớ, lưu trữ, phiên bản hệ điều hành), chứ không phải thiết bị hỏng. Đây là các hạng mục chi tiêu có kế hoạch, không phải sửa chữa khẩn cấp.",
+  em_watch:"THEO DÕI",em_action:"HÀNH ĐỘNG",em_note:"GHI CHÚ",
+  cp_lead:"Còn bao nhiêu dung lượng trên mỗi máy chủ, và khối lượng công việc được phân bổ như thế nào.",
+  cp_c1_h4:"Bộ nhớ đã dùng và còn trống (GB mỗi host)",cp_c1_cap:"Phần mỏng, sáng màu là toàn bộ bộ nhớ còn trống — production gần như không còn.",
+  cp_c2_h4:"Số máy ảo trên mỗi host",cp_c2_cap:"127 ở production, 47 ở UAT",
+  cp_ins:"<b>Cần hành động:</b> Cả ba host trading đều ở mức bộ nhớ 90–94% và không có host dự phòng. Bổ sung 2 host ESXi (N+1) hoặc di chuyển khối lượng công việc sang trung tâm dữ liệu mới để một sự cố không làm gián đoạn giao dịch.",
+  cp_details:"Xem bảng chi tiết host",
+  cp_sub1:"Host Production — HPE ProLiant DL380 Gen10 (mỗi máy 768 GB RAM)",
+  cp_sub2:"Host UAT / Development — Dell PowerEdge R730 (ESXi 6.0, đã hết hỗ trợ)",
+  cp_sub3:"Máy chủ Oracle Database vật lý (bare-metal RAC)",
+  th_host:"Host",th_cpu:"CPU",th_esxi:"ESXi",th_cpuload:"Tải CPU",th_ramload:"Tải RAM",th_vms:"VM",th_status:"Trạng thái",
+  th_server:"Máy chủ",th_model:"Model",th_ram:"RAM",th_mgmt:"Quản lý",th_ilosec:"Bảo mật iLO",
+  st_healthy:"Bình thường",st_memcrit:"Bộ nhớ nguy cấp",st_unsupported:"Không còn hỗ trợ",
+  badge_hardening:"Khuyến nghị tăng cường bảo mật",
+  st_lead:"Hai mảng lưu trữ Dell EMC Unity 380. Một mảng còn dư dả; mảng dành cho giao dịch đang bị cấp phát vượt mức.",
+  st_c1_h4:"Dung lượng đã dùng và còn trống (TB)",st_c1_cap:"Mỗi mảng có tổng dung lượng 16.3 TB",
+  st_c2_h4:"Tỷ lệ cấp phát so với giới hạn vật lý",st_c2_cap:"Vượt qua mốc 100% nghĩa là đã cấp phát vượt mức",
+  st_ins:"<b>Nhận định:</b> Mảng lưu trữ giao dịch (SSV-TRD-STORAGE) đang được cấp phát ở mức 166% — tổng dung lượng volume đã cấp vượt quá dung lượng đĩa vật lý. Hiện tại vẫn hoạt động bình thường, nhưng nếu dữ liệu tiếp tục tăng có thể cạn kiệt không gian thực. Cần mở rộng dung lượng hoặc bật nén/phân tầng trong quý này.",
+  st_details:"Xem bảng chi tiết Storage &amp; SAN",
+  st_th_attr:"Thuộc tính",st_attr_model:"Model",st_attr_total:"Tổng dung lượng",st_attr_free:"Dung lượng trống",
+  st_attr_sub:"Tỷ lệ cấp phát",st_attr_fast:"FAST Cache",st_attr_health:"Tình trạng",
+  st_freeDB:'<span class="badge b-ok">12.8 TB (còn trống 78%)</span>',
+  st_freeTRD:'<span class="badge b-high">5.2 TB (còn trống 32%)</span>',
+  st_subDB:'<span class="badge b-ok">33% — bình thường</span>',
+  st_subTRD:'<span class="badge b-crit">166% — vượt mức cấp phát</span>',
+  st_enabled:"Đã bật",st_na:"N/A",
+  badge_ok_html:'<span class="badge b-ok">Đạt</span>',badge_healthy:"Bình thường",
+  st_sub_san:"SAN Fabric — Brocade G610",st_th_param:"Thông số",st_th_value:"Giá trị",
+  st_p_switch:"Switch",st_p_fabric:"Fabric OS",st_p_domain:"Domain / Vai trò",st_p_mgmtip:"IP quản lý",
+  st_principal:"Principal",
+  db_lead:"Oracle là nền tảng chính (bare-metal RAC cho giao dịch). MySQL, MongoDB và MariaDB hỗ trợ các ứng dụng cụ thể.",
+  th_database:"Cơ sở dữ liệu",th_verrole:"Phiên bản / Vai trò",th_infra:"Hạ tầng",th_workload:"Khối lượng công việc",
+  ap_lead:"Tổng quan những gì đang chạy trong môi trường — sau đó là chi tiết có thể tìm kiếm.",
+  ap_c1_h4:"Ứng dụng theo lĩnh vực nghiệp vụ",ap_c1_cap:"Tổng cộng 53 nhóm ứng dụng",
+  ap_c2_h4:"Theo mức độ quan trọng nghiệp vụ",ap_c2_cap:"Số lượng hỗ trợ trực tiếp cho giao dịch",
+  ap_ins:"<b>Nhận định:</b> 10 nhóm ứng dụng có tính chất trọng yếu (order gateway, hệ thống giao dịch và FIX). Một số vẫn đang chạy trên CentOS 7 đã hết hỗ trợ — nên được ưu tiên hàng đầu trong kế hoạch di chuyển hệ điều hành.",
+  ap_details:"Tìm kiếm toàn bộ danh mục ứng dụng",
+  ap_search_ph:"Tìm ứng dụng, VM, mô tả…",
+  ap_all_areas:"Tất cả lĩnh vực",ap_all_crit:"Tất cả mức độ",
+  area_trading:"Giao dịch &amp; Dữ liệu thị trường",area_banking:"Cổng kết nối Ngân hàng",area_business:"Nghiệp vụ &amp; Hỗ trợ",area_security:"Bảo mật &amp; Hạ tầng",
+  th_appvm:"Ứng dụng / VM",th_area:"Lĩnh vực",th_os:"OS",th_resources:"Tài nguyên",th_criticality:"Mức độ quan trọng",th_description:"Mô tả",
+  ap_nomatch:"Không có ứng dụng phù hợp.",ap_count_tpl:"{n} trong {t} mục",
+  rk_lead:"Tất cả các vấn đề đã xác định, được xếp hạng theo mức độ ảnh hưởng đến nghiệp vụ.",
+  rk_c1_h4:"Rủi ro theo mức độ ưu tiên",rk_c1_cap:"3 Nghiêm trọng · 4 Cao · 3 Trung bình",
+  rk_c2_h4:"Rủi ro theo nhóm chủ đề",rk_c2_cap:"Mỗi rủi ro thể hiện loại khoảng trống nào",
+  rk_all_prio:"Tất cả mức ưu tiên",
+  rk_theme_capacity:"Dung lượng",rk_theme_lifecycle:"Vòng đời / EOL",rk_theme_resilience:"Khả năng phục hồi",rk_theme_security:"Bảo mật",
+  th_id:"ID",th_risk:"Rủi ro",th_affected:"Đối tượng ảnh hưởng",th_bizimpact:"Ảnh hưởng nghiệp vụ",th_priority:"Mức ưu tiên",
+  rk_count_tpl:"{n} trong {t} rủi ro",
+  ac_lead:"Cần làm gì, theo thứ tự nào, và ai phụ trách. Được nhóm theo khung thời gian.",
+  ac_owner:"Phụ trách:",ac_effort:"Mức độ nỗ lực:",
+  foot_by:"Phân tích bởi",
+  badge_critical:"NGHIÊM TRỌNG",badge_high:"CAO",badge_medium:"TRUNG BÌNH",badge_ok:"ĐẠT",badge_risk:"RỦI RO",
+  ch_critical:"Nghiêm trọng",ch_high:"Cao",ch_medium:"Trung bình",ch_standard:"Tiêu chuẩn",
+  ch_supported:"Còn hỗ trợ",ch_eol:"Hết hỗ trợ (không còn vá)",
+  ch_dbstorage:"Lưu trữ DB",ch_tradingstorage:"Lưu trữ giao dịch",
+  ch_subscribed:"Đã cấp phát",ch_physlimit:"Giới hạn vật lý (100%)",
+  ch_used:"Đã dùng",ch_free:"Còn trống",
+  ch_pctmemused:"% bộ nhớ đã dùng",ch_pctsubscribed:"% đã cấp phát",
+},
+};
+function t(key){return (I18N[LANG]&&I18N[LANG][key])??I18N.en[key]??key;}
+function applyI18n(){
+  document.documentElement.lang=LANG;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{el.innerHTML=t(el.getAttribute('data-i18n'));});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{el.placeholder=t(el.getAttribute('data-i18n-ph'));});
+}
+
+/* ---- databases (per language) ---- */
+const dbsData={
+en:[
   {n:"Oracle Database",v:"19c/21c (RAC)",inf:"Physical DB01 + DB02 (512 GB each)",w:"Core trading, BOS, CRM, HRMS",s:"ok"},
   {n:"Oracle DB (UAT)",v:"Oracle RAC 01/02 UAT",inf:"Virtual (32 GB, 1.0–1.2 TB)",w:"UAT trading / KRX testing",s:"ok"},
   {n:"MySQL (Fund Platform)",v:"MySQL (Ubuntu cluster)",inf:"Virtual Active/Standby (16 GB)",w:"Fund management transactions",s:"ok"},
   {n:"MongoDB",v:"MongoDB (standalone)",inf:"Virtual DB-Mongo (24 GB, 270 GB)",w:"Document store / microservices",s:"ok"},
   {n:"Oracle Cloud Control",v:"Enterprise Manager Cloud Control",inf:"Virtual (OL8, 18 GB, 500 GB)",w:"DB monitoring & management",s:"ok"},
   {n:"Database KRX Warehouse",v:"Oracle Linux 7 (DB Warehouse)",inf:"Virtual (8 GB, 650 GB)",w:"KRX data warehouse",s:"risk"},
+],
+ko:[
+  {n:"Oracle Database",v:"19c/21c (RAC)",inf:"물리 서버 DB01 + DB02(각 512GB)",w:"핵심 트레이딩, BOS, CRM, HRMS",s:"ok"},
+  {n:"Oracle DB (UAT)",v:"Oracle RAC 01/02 UAT",inf:"가상(32GB, 1.0–1.2TB)",w:"UAT 트레이딩 / KRX 테스트",s:"ok"},
+  {n:"MySQL (Fund Platform)",v:"MySQL (Ubuntu cluster)",inf:"가상 Active/Standby(16GB)",w:"펀드 관리 트랜잭션",s:"ok"},
+  {n:"MongoDB",v:"MongoDB (standalone)",inf:"가상 DB-Mongo(24GB, 270GB)",w:"문서 저장소 / 마이크로서비스",s:"ok"},
+  {n:"Oracle Cloud Control",v:"Enterprise Manager Cloud Control",inf:"가상(OL8, 18GB, 500GB)",w:"DB 모니터링 및 관리",s:"ok"},
+  {n:"Database KRX Warehouse",v:"Oracle Linux 7 (DB Warehouse)",inf:"가상(8GB, 650GB)",w:"KRX 데이터 웨어하우스",s:"risk"},
+],
+vi:[
+  {n:"Oracle Database",v:"19c/21c (RAC)",inf:"Vật lý DB01 + DB02 (mỗi máy 512 GB)",w:"Giao dịch trọng yếu, BOS, CRM, HRMS",s:"ok"},
+  {n:"Oracle DB (UAT)",v:"Oracle RAC 01/02 UAT",inf:"Ảo hóa (32 GB, 1.0–1.2 TB)",w:"Giao dịch UAT / kiểm thử KRX",s:"ok"},
+  {n:"MySQL (Fund Platform)",v:"MySQL (Ubuntu cluster)",inf:"Ảo hóa Active/Standby (16 GB)",w:"Giao dịch quản lý quỹ",s:"ok"},
+  {n:"MongoDB",v:"MongoDB (standalone)",inf:"Ảo hóa DB-Mongo (24 GB, 270 GB)",w:"Kho tài liệu / microservices",s:"ok"},
+  {n:"Oracle Cloud Control",v:"Enterprise Manager Cloud Control",inf:"Ảo hóa (OL8, 18 GB, 500 GB)",w:"Giám sát & quản lý cơ sở dữ liệu",s:"ok"},
+  {n:"Database KRX Warehouse",v:"Oracle Linux 7 (DB Warehouse)",inf:"Ảo hóa (8 GB, 650 GB)",w:"Kho dữ liệu KRX",s:"risk"},
+],
+};
+
+/* ---- applications: technical fields + translated area/description ---- */
+const areaNames={
+  en:{trading:"Trading &amp; Market Data",banking:"Banking Gateway",business:"Business &amp; Support",security:"Security &amp; Infrastructure"},
+  ko:{trading:"트레이딩 및 시장 데이터",banking:"뱅킹 게이트웨이",business:"업무 지원",security:"보안 및 인프라"},
+  vi:{trading:"Giao dịch &amp; Dữ liệu thị trường",banking:"Cổng kết nối Ngân hàng",business:"Nghiệp vụ &amp; Hỗ trợ",security:"Bảo mật &amp; Hạ tầng"},
+};
+const appsMeta=[
+  {id:"OGS01 / OGS02",area:"trading",os:"CentOS 7",res:"24C / 64GB",crit:"CRITICAL"},
+  {id:"OTS01 / OTS02",area:"trading",os:"CentOS 7",res:"24C / 64GB",crit:"CRITICAL"},
+  {id:"Stream_DC01 / DC02",area:"trading",os:"CentOS 7",res:"8C / 64GB",crit:"CRITICAL"},
+  {id:"HOSE FIX GW (Main/Standby)",area:"trading",os:"Oracle Linux 8",res:"8C / 32GB",crit:"CRITICAL"},
+  {id:"HNX FIX GW (Main/Standby)",area:"trading",os:"Oracle Linux 8",res:"8C / 32GB",crit:"CRITICAL"},
+  {id:"HOSE KRX FIX GW (Main/Standby)",area:"trading",os:"Oracle Linux 8",res:"8C / 32GB",crit:"CRITICAL"},
+  {id:"HNX KRX FIX GW (Main/Standby)",area:"trading",os:"Oracle Linux 8",res:"8C / 32GB",crit:"CRITICAL"},
+  {id:"MDDS HOSE 01/02",area:"trading",os:"Oracle Linux 8",res:"8C / 32GB",crit:"HIGH"},
+  {id:"MDDS-PS01 / PS02",area:"trading",os:"Oracle Linux 8",res:"8C / 32GB",crit:"HIGH"},
+  {id:"FIX-PS01 / PS02",area:"trading",os:"Oracle Linux 8",res:"8C / 32GB",crit:"HIGH"},
+  {id:"FEP-MarketData / FEP-Order",area:"trading",os:"Oracle Linux 8",res:"4C / 8GB",crit:"HIGH"},
+  {id:"MCI-01 / MCI-02",area:"trading",os:"Oracle Linux 8",res:"8C / 32GB",crit:"HIGH"},
+  {id:"Pro Horizon OMS / UAT Horizon OMS",area:"trading",os:"Oracle Linux 8",res:"8C / 24GB",crit:"HIGH"},
+  {id:"HOS01 / HOS02 (HOSE KRX)",area:"trading",os:"CentOS 7 / OL8",res:"12C / 64GB",crit:"CRITICAL"},
+  {id:"HNX01 / HNX02",area:"trading",os:"Oracle Linux 8",res:"8C / 24GB",crit:"CRITICAL"},
+  {id:"BOSDR01 / BOSDR02",area:"trading",os:"Oracle Linux 8",res:"8C / 64GB",crit:"CRITICAL"},
+  {id:"OMS01 / OMS02",area:"trading",os:"CentOS 7",res:"6C / 24GB",crit:"HIGH"},
+  {id:"BankGateway_BIDV",area:"banking",os:"CentOS 7",res:"4C / 8GB",crit:"—"},
+  {id:"SHBVN-BankGateway02S",area:"banking",os:"CentOS 7",res:"4C / 8GB",crit:"—"},
+  {id:"SHB-APIServer01",area:"banking",os:"CentOS 7",res:"4C / 8GB",crit:"—"},
+  {id:"VCB-BankGate-TPRL",area:"banking",os:"CentOS 7",res:"4C / 8GB",crit:"—"},
+  {id:"Wooribank-Gateway",area:"banking",os:"CentOS 7",res:"4C / 8GB",crit:"—"},
+  {id:"API-Lotte-01 / 02",area:"banking",os:"Oracle Linux 8",res:"8C / 16GB",crit:"—"},
+  {id:"VTBGW-01 / 02",area:"banking",os:"Ubuntu",res:"4C / 16GB",crit:"—"},
+  {id:"InfoBip Gateway",area:"banking",os:"CentOS 9",res:"4C / 8GB",crit:"—"},
+  {id:"HRMS / APP-HRMS",area:"business",os:"Windows Server 2019",res:"8C / 24GB",crit:"—"},
+  {id:"CRM-Server / NEW CRM",area:"business",os:"Windows Server 2019/2012",res:"10C / 32GB",crit:"—"},
+  {id:"AMS",area:"business",os:"CentOS 7",res:"6C / 8GB",crit:"—"},
+  {id:"Central Cache System",area:"business",os:"Ubuntu",res:"12C / 24GB",crit:"—"},
+  {id:"SSV_WebServer01",area:"business",os:"CentOS 7",res:"12C / 32GB",crit:"—"},
+  {id:"S-ERA Server",area:"business",os:"Ubuntu",res:"12C / 32GB",crit:"—"},
+  {id:"API-Econtract",area:"business",os:"CentOS 7",res:"4C / 8GB",crit:"—"},
+  {id:"New-EKYC-PRO",area:"business",os:"Ubuntu",res:"8C / 10GB",crit:"—"},
+  {id:"SFTP-HQ",area:"business",os:"Oracle Linux 8",res:"8C / 24GB",crit:"—"},
+  {id:"Oracle Cloud Control",area:"business",os:"Oracle Linux 8",res:"8C / 18GB",crit:"—"},
+  {id:"MWS01/02 Frontend/Backend",area:"business",os:"CentOS 7",res:"6C / 16–32GB",crit:"—"},
+  {id:"Fund Management Cluster (6 VMs)",area:"business",os:"Ubuntu",res:"6–8C / 16GB ea",crit:"—"},
+  {id:"APP-API-TPRL 01/02",area:"business",os:"CentOS 7",res:"6C / 16GB",crit:"—"},
+  {id:"EndPoint-Central",area:"business",os:"Windows Server 2019",res:"12C / 16GB",crit:"—"},
+  {id:"GITLAB CENTRAL",area:"business",os:"Ubuntu",res:"8C / 16GB",crit:"—"},
+  {id:"Zabbix-Monitoring (UAT)",area:"business",os:"Ubuntu",res:"8C / 28GB",crit:"—"},
+  {id:"Jira-Server (UAT)",area:"business",os:"Ubuntu",res:"8C / 16GB",crit:"—"},
+  {id:"Mail-ShinhanSec / Mail-CRM",area:"business",os:"Ubuntu",res:"4C / 8–12GB",crit:"—"},
+  {id:"AD-HCM / ADC-HCM",area:"security",os:"Windows Server 2019",res:"4C / 16GB",crit:"—"},
+  {id:"Access-Control-01",area:"security",os:"Windows Server 2019",res:"6C / 12GB",crit:"—"},
+  {id:"PAM - PTA / PSM-GW / PSMP / Remote",area:"security",os:"RHEL 8 / Ubuntu",res:"4–8C / 8–16GB",crit:"—"},
+  {id:"Kaspersky Server (UAT)",area:"security",os:"Ubuntu",res:"12C / 16GB",crit:"—"},
+  {id:"ClamAV Server",area:"security",os:"Oracle Linux 8",res:"1C / 1GB",crit:"—"},
+  {id:"NTPServer / NTPVoice01",area:"security",os:"CentOS 7",res:"2C / 2GB",crit:"—"},
+  {id:"SMSEmail01 / 02",area:"security",os:"CentOS 7",res:"4C / 8GB",crit:"—"},
+  {id:"Printer-Server",area:"security",os:"Windows Server 2019",res:"4C / 12GB",crit:"—"},
+  {id:"BackupCentOS",area:"security",os:"CentOS 7",res:"8C / 8GB",crit:"—"},
+  {id:"ID System",area:"security",os:"Ubuntu",res:"8C / 16GB",crit:"—"},
 ];
-const eolOS=["CentOS 7","CentOS 9","Windows 10","Windows Server 2012","Oracle Linux 7","CentOS 8"];
-const apps=[
-  ["OGS01 / OGS02","Trading & Market Data","CentOS 7","24C / 64GB","CRITICAL","Order Gateway System — routes client orders to exchanges"],
-  ["OTS01 / OTS02","Trading & Market Data","CentOS 7","24C / 64GB","CRITICAL","Order Trading System — core order processing engine"],
-  ["Stream_DC01 / DC02","Trading & Market Data","CentOS 7","8C / 64GB","CRITICAL","Real-time market data streaming servers"],
-  ["HOSE FIX GW (Main/Standby)","Trading & Market Data","Oracle Linux 8","8C / 32GB","CRITICAL","FIX protocol gateway for HOSE equity trading"],
-  ["HNX FIX GW (Main/Standby)","Trading & Market Data","Oracle Linux 8","8C / 32GB","CRITICAL","FIX protocol gateway for HNX equity trading"],
-  ["HOSE KRX FIX GW (Main/Standby)","Trading & Market Data","Oracle Linux 8","8C / 32GB","CRITICAL","KRX derivatives FIX gateway for HOSE"],
-  ["HNX KRX FIX GW (Main/Standby)","Trading & Market Data","Oracle Linux 8","8C / 32GB","CRITICAL","KRX derivatives FIX gateway for HNX"],
-  ["MDDS HOSE 01/02","Trading & Market Data","Oracle Linux 8","8C / 32GB","HIGH","Market Data Distribution System — HOSE"],
-  ["MDDS-PS01 / PS02","Trading & Market Data","Oracle Linux 8","8C / 32GB","HIGH","MDDS primary/secondary for market data publishing"],
-  ["FIX-PS01 / PS02","Trading & Market Data","Oracle Linux 8","8C / 32GB","HIGH","FIX protocol primary/secondary servers"],
-  ["FEP-MarketData / FEP-Order","Trading & Market Data","Oracle Linux 8","4C / 8GB","HIGH","Front-End Processor for market data and orders"],
-  ["MCI-01 / MCI-02","Trading & Market Data","Oracle Linux 8","8C / 32GB","HIGH","Market Connectivity Interface"],
-  ["Pro Horizon OMS / UAT Horizon OMS","Trading & Market Data","Oracle Linux 8","8C / 24GB","HIGH","Order Management System (OMS)"],
-  ["HOS01 / HOS02 (HOSE KRX)","Trading & Market Data","CentOS 7 / OL8","12C / 64GB","CRITICAL","HOSE KRX derivative trading servers"],
-  ["HNX01 / HNX02","Trading & Market Data","Oracle Linux 8","8C / 24GB","CRITICAL","HNX connectivity servers"],
-  ["BOSDR01 / BOSDR02","Trading & Market Data","Oracle Linux 8","8C / 64GB","CRITICAL","Back Office System DR — post-trade processing"],
-  ["OMS01 / OMS02","Trading & Market Data","CentOS 7","6C / 24GB","HIGH","Order Management System primary/secondary"],
-  ["BankGateway_BIDV","Banking Gateway","CentOS 7","4C / 8GB","—","BIDV bank integration gateway"],
-  ["SHBVN-BankGateway02S","Banking Gateway","CentOS 7","4C / 8GB","—","SHB Vietnam bank gateway (secondary)"],
-  ["SHB-APIServer01","Banking Gateway","CentOS 7","4C / 8GB","—","SHB bank API server"],
-  ["VCB-BankGate-TPRL","Banking Gateway","CentOS 7","4C / 8GB","—","Vietcombank gateway"],
-  ["Wooribank-Gateway","Banking Gateway","CentOS 7","4C / 8GB","—","Woori Bank integration gateway"],
-  ["API-Lotte-01 / 02","Banking Gateway","Oracle Linux 8","8C / 16GB","—","Lotte Card payment API (active/active)"],
-  ["VTBGW-01 / 02","Banking Gateway","Ubuntu","4C / 16GB","—","Vietinbank gateway (active/active)"],
-  ["InfoBip Gateway","Banking Gateway","CentOS 9","4C / 8GB","—","InfoBip SMS/notification gateway"],
-  ["HRMS / APP-HRMS","Business & Support","Windows Server 2019","8C / 24GB","—","Human Resource Management System"],
-  ["CRM-Server / NEW CRM","Business & Support","Windows Server 2019/2012","10C / 32GB","—","Customer Relationship Management"],
-  ["AMS","Business & Support","CentOS 7","6C / 8GB","—","Asset Management System"],
-  ["Central Cache System","Business & Support","Ubuntu","12C / 24GB","—","Centralized caching layer (Redis/similar)"],
-  ["SSV_WebServer01","Business & Support","CentOS 7","12C / 32GB","—","Corporate web server"],
-  ["S-ERA Server","Business & Support","Ubuntu","12C / 32GB","—","eRA document management"],
-  ["API-Econtract","Business & Support","CentOS 7","4C / 8GB","—","Electronic contract API"],
-  ["New-EKYC-PRO","Business & Support","Ubuntu","8C / 10GB","—","eKYC digital identity verification (production)"],
-  ["SFTP-HQ","Business & Support","Oracle Linux 8","8C / 24GB","—","Secure file transfer to HQ (Korea)"],
-  ["Oracle Cloud Control","Business & Support","Oracle Linux 8","8C / 18GB","—","Database Enterprise Manager"],
-  ["MWS01/02 Frontend/Backend","Business & Support","CentOS 7","6C / 16–32GB","—","Market web service front/back end"],
-  ["Fund Management Cluster (6 VMs)","Business & Support","Ubuntu","6–8C / 16GB ea","—","Fund platform: MasterNode, Workers, MySQL, Redis, Storage"],
-  ["APP-API-TPRL 01/02","Business & Support","CentOS 7","6C / 16GB","—","Third-party API integration layer"],
-  ["EndPoint-Central","Business & Support","Windows Server 2019","12C / 16GB","—","ManageEngine endpoint management"],
-  ["GITLAB CENTRAL","Business & Support","Ubuntu","8C / 16GB","—","Source code repository"],
-  ["Zabbix-Monitoring (UAT)","Business & Support","Ubuntu","8C / 28GB","—","Infrastructure monitoring platform"],
-  ["Jira-Server (UAT)","Business & Support","Ubuntu","8C / 16GB","—","Project management / issue tracking"],
-  ["Mail-ShinhanSec / Mail-CRM","Business & Support","Ubuntu","4C / 8–12GB","—","Internal mail servers"],
-  ["AD-HCM / ADC-HCM","Security & Infrastructure","Windows Server 2019","4C / 16GB","—","Active Directory Domain Controller + ADC"],
-  ["Access-Control-01","Security & Infrastructure","Windows Server 2019","6C / 12GB","—","Network Access Control (NAC) system"],
-  ["PAM - PTA / PSM-GW / PSMP / Remote","Security & Infrastructure","RHEL 8 / Ubuntu","4–8C / 8–16GB","—","CyberArk Privileged Access Management suite"],
-  ["Kaspersky Server (UAT)","Security & Infrastructure","Ubuntu","12C / 16GB","—","Endpoint security / antivirus management"],
-  ["ClamAV Server","Security & Infrastructure","Oracle Linux 8","1C / 1GB","—","Open-source antivirus for file scanning"],
-  ["NTPServer / NTPVoice01","Security & Infrastructure","CentOS 7","2C / 2GB","—","NTP time synchronization servers"],
-  ["SMSEmail01 / 02","Security & Infrastructure","CentOS 7","4C / 8GB","—","SMS/Email notification delivery"],
-  ["Printer-Server","Security & Infrastructure","Windows Server 2019","4C / 12GB","—","Centralized print management"],
-  ["BackupCentOS","Security & Infrastructure","CentOS 7","8C / 8GB","—","Backup management server"],
-  ["ID System","Security & Infrastructure","Ubuntu","8C / 16GB","—","Identity management system"],
-];
-const risks=[
+const appDesc={
+en:[
+"Order Gateway System — routes client orders to exchanges",
+"Order Trading System — core order processing engine",
+"Real-time market data streaming servers",
+"FIX protocol gateway for HOSE equity trading",
+"FIX protocol gateway for HNX equity trading",
+"KRX derivatives FIX gateway for HOSE",
+"KRX derivatives FIX gateway for HNX",
+"Market Data Distribution System — HOSE",
+"MDDS primary/secondary for market data publishing",
+"FIX protocol primary/secondary servers",
+"Front-End Processor for market data and orders",
+"Market Connectivity Interface",
+"Order Management System (OMS)",
+"HOSE KRX derivative trading servers",
+"HNX connectivity servers",
+"Back Office System DR — post-trade processing",
+"Order Management System primary/secondary",
+"BIDV bank integration gateway",
+"SHB Vietnam bank gateway (secondary)",
+"SHB bank API server",
+"Vietcombank gateway",
+"Woori Bank integration gateway",
+"Lotte Card payment API (active/active)",
+"Vietinbank gateway (active/active)",
+"InfoBip SMS/notification gateway",
+"Human Resource Management System",
+"Customer Relationship Management",
+"Asset Management System",
+"Centralized caching layer (Redis/similar)",
+"Corporate web server",
+"eRA document management",
+"Electronic contract API",
+"eKYC digital identity verification (production)",
+"Secure file transfer to HQ (Korea)",
+"Database Enterprise Manager",
+"Market web service front/back end",
+"Fund platform: MasterNode, Workers, MySQL, Redis, Storage",
+"Third-party API integration layer",
+"ManageEngine endpoint management",
+"Source code repository",
+"Infrastructure monitoring platform",
+"Project management / issue tracking",
+"Internal mail servers",
+"Active Directory Domain Controller + ADC",
+"Network Access Control (NAC) system",
+"CyberArk Privileged Access Management suite",
+"Endpoint security / antivirus management",
+"Open-source antivirus for file scanning",
+"NTP time synchronization servers",
+"SMS/Email notification delivery",
+"Centralized print management",
+"Backup management server",
+"Identity management system",
+],
+ko:[
+"주문 게이트웨이 시스템 — 고객 주문을 거래소로 전달",
+"주문 거래 시스템 — 핵심 주문 처리 엔진",
+"실시간 시장 데이터 스트리밍 서버",
+"HOSE 주식 거래용 FIX 프로토콜 게이트웨이",
+"HNX 주식 거래용 FIX 프로토콜 게이트웨이",
+"HOSE용 KRX 파생상품 FIX 게이트웨이",
+"HNX용 KRX 파생상품 FIX 게이트웨이",
+"시장 데이터 배포 시스템 — HOSE",
+"시장 데이터 배포를 위한 MDDS 주/보조 서버",
+"FIX 프로토콜 주/보조 서버",
+"시장 데이터 및 주문 처리를 위한 프론트엔드 프로세서",
+"시장 연결 인터페이스",
+"주문관리시스템(OMS)",
+"HOSE KRX 파생상품 거래 서버",
+"HNX 연결 서버",
+"백오피스 시스템 DR — 거래 후처리",
+"주문관리시스템 주/보조 서버",
+"BIDV 은행 연동 게이트웨이",
+"SHB 베트남 은행 게이트웨이(보조)",
+"SHB 은행 API 서버",
+"베트콤뱅크 게이트웨이",
+"우리은행 연동 게이트웨이",
+"롯데카드 결제 API(액티브/액티브)",
+"비엣인뱅크 게이트웨이(액티브/액티브)",
+"InfoBip SMS/알림 게이트웨이",
+"인사관리시스템(HRMS)",
+"고객관계관리(CRM)",
+"자산관리시스템",
+"중앙 캐싱 레이어(Redis 등)",
+"회사 웹 서버",
+"eRA 문서 관리",
+"전자계약 API",
+"eKYC 전자신원인증(운영)",
+"본사(한국)로의 보안 파일 전송",
+"데이터베이스 엔터프라이즈 매니저",
+"마켓 웹서비스 프론트/백엔드",
+"펀드 플랫폼: MasterNode, Worker, MySQL, Redis, 스토리지",
+"서드파티 API 연동 레이어",
+"ManageEngine 엔드포인트 관리",
+"소스코드 저장소",
+"인프라 모니터링 플랫폼",
+"프로젝트 관리 / 이슈 트래킹",
+"사내 메일 서버",
+"Active Directory 도메인 컨트롤러 + ADC",
+"네트워크 접근 제어(NAC) 시스템",
+"CyberArk 권한 관리(PAM) 솔루션",
+"엔드포인트 보안 / 백신 관리",
+"파일 검사를 위한 오픈소스 백신",
+"NTP 시간 동기화 서버",
+"SMS/이메일 알림 발송",
+"중앙 프린트 관리",
+"백업 관리 서버",
+"계정관리시스템(IDM)",
+],
+vi:[
+"Hệ thống Cổng Đặt lệnh — chuyển lệnh của khách hàng đến sàn giao dịch",
+"Hệ thống Giao dịch Lệnh — bộ xử lý lệnh trung tâm",
+"Máy chủ truyền dữ liệu thị trường thời gian thực",
+"Cổng giao thức FIX cho giao dịch cổ phiếu HOSE",
+"Cổng giao thức FIX cho giao dịch cổ phiếu HNX",
+"Cổng FIX phái sinh KRX cho HOSE",
+"Cổng FIX phái sinh KRX cho HNX",
+"Hệ thống phân phối dữ liệu thị trường — HOSE",
+"Máy chủ MDDS chính/phụ để phát hành dữ liệu thị trường",
+"Máy chủ FIX chính/phụ",
+"Bộ xử lý tiền xử lý (Front-End) cho dữ liệu thị trường và lệnh",
+"Giao diện kết nối thị trường",
+"Hệ thống Quản lý Lệnh (OMS)",
+"Máy chủ giao dịch phái sinh HOSE KRX",
+"Máy chủ kết nối HNX",
+"Hệ thống Back Office DR — xử lý hậu giao dịch",
+"Máy chủ OMS chính/phụ",
+"Cổng kết nối ngân hàng BIDV",
+"Cổng ngân hàng SHB Việt Nam (dự phòng)",
+"Máy chủ API ngân hàng SHB",
+"Cổng kết nối Vietcombank",
+"Cổng kết nối Woori Bank",
+"API thanh toán Lotte Card (active/active)",
+"Cổng kết nối Vietinbank (active/active)",
+"Cổng SMS/thông báo InfoBip",
+"Hệ thống Quản lý Nhân sự (HRMS)",
+"Quản lý Quan hệ Khách hàng (CRM)",
+"Hệ thống Quản lý Tài sản",
+"Lớp cache tập trung (Redis hoặc tương tự)",
+"Máy chủ web công ty",
+"Quản lý tài liệu eRA",
+"API hợp đồng điện tử",
+"Xác thực định danh điện tử eKYC (production)",
+"Truyền file bảo mật về trụ sở chính (Hàn Quốc)",
+"Enterprise Manager cho cơ sở dữ liệu",
+"Front-end/back-end dịch vụ web thị trường",
+"Nền tảng Quỹ: MasterNode, Worker, MySQL, Redis, Storage",
+"Lớp tích hợp API bên thứ ba",
+"Quản lý endpoint ManageEngine",
+"Kho mã nguồn",
+"Nền tảng giám sát hạ tầng",
+"Quản lý dự án / theo dõi issue",
+"Máy chủ email nội bộ",
+"Bộ điều khiển miền Active Directory + ADC",
+"Hệ thống Kiểm soát Truy cập Mạng (NAC)",
+"Bộ giải pháp Quản lý Truy cập Đặc quyền CyberArk (PAM)",
+"Quản lý bảo mật endpoint / diệt virus",
+"Phần mềm diệt virus mã nguồn mở để quét file",
+"Máy chủ đồng bộ thời gian NTP",
+"Gửi thông báo SMS/Email",
+"Quản lý in ấn tập trung",
+"Máy chủ quản lý sao lưu",
+"Hệ thống quản lý định danh",
+],
+};
+function apps(){
+  return appsMeta.map((m,i)=>[m.id,areaNames[LANG][m.area],m.os,m.res,m.crit,appDesc[LANG][i],m.area]);
+}
+
+/* ---- risk register (per language) ---- */
+const risksData={
+en:[
   ["RISK-001","RAM at 90-94% on all production ESXi hosts — no headroom for host failure","Prod ESXi .201/.202/.203","Service outage / VM crash on host failure","CRITICAL"],
   ["RISK-002","~54 VMs running CentOS 7 (EOL June 2024) — no security patches","OGS, OTS, AMS, Gateways, etc.","Security breach, compliance violation","CRITICAL"],
   ["RISK-003","UAT cluster running ESXi 6.0 (End of General Support since 2020)","UAT hosts .105/.106/.107","Unpatched vulnerabilities, compliance fail","CRITICAL"],
@@ -476,8 +962,36 @@ const risks=[
   ["RISK-008","Windows 10 VMs running in production (EOL October 2025)","ECONTRACT-UAT, HOSE-PRS, Pro-Lottle PC","Security non-compliance","MEDIUM"],
   ["RISK-009","UAT vCenter 6.5 EOL — no new feature updates or security patches","vCenter 10.22.102.108","Management plane vulnerability","MEDIUM"],
   ["RISK-010","No visible centralized log management or SIEM in production scope","All production VMs","Delayed threat detection","MEDIUM"],
-];
-const recs=[
+],
+ko:[
+  ["RISK-001","모든 운영(Production) ESXi 호스트의 RAM 사용률이 90-94% — 호스트 장애 시 여유 용량 없음","운영 ESXi .201/.202/.203","호스트 장애 시 서비스 중단 / VM 크래시","CRITICAL"],
+  ["RISK-002","약 54대의 VM이 CentOS 7 사용 중(2024년 6월 EOL) — 보안 패치 미지원","OGS, OTS, AMS, 게이트웨이 등","보안 침해, 컴플라이언스 위반","CRITICAL"],
+  ["RISK-003","UAT 클러스터가 ESXi 6.0 사용 중(2020년 일반 지원 종료)","UAT 호스트 .105/.106/.107","미패치 취약점, 컴플라이언스 실패","CRITICAL"],
+  ["RISK-004","SSV-TRD-STORAGE 166% 과다 할당 — 스토리지 풀 고갈 위험","SSV-TRD-STORAGE(Unity 380)","풀 고갈 시 데이터 손실 / 시스템 크래시","HIGH"],
+  ["RISK-005","VMware HA/DRS 클러스터 미구성 — 호스트 장애 시 수동 페일오버 필요","모든 운영 워크로드","장애 발생 시 다운타임 장기화","HIGH"],
+  ["RISK-006","단일 데이터센터 운영 — DR 사이트 부재로 시설 장애 시 전체 서비스 중단","SHSV 전체 인프라","거래 전면 중단","HIGH"],
+  ["RISK-007","DB 서버의 iLO 5 보안 상태 'Risk' — 펌웨어 강화 필요","DB01, DB02 물리 서버","원격 관리 노출","HIGH"],
+  ["RISK-008","운영 환경에 Windows 10 VM 사용 중(2025년 10월 EOL)","ECONTRACT-UAT, HOSE-PRS, Pro-Lottle PC","보안 미준수","MEDIUM"],
+  ["RISK-009","UAT vCenter 6.5 EOL — 신규 기능 및 보안 패치 미지원","vCenter 10.22.102.108","관리 플레인 취약점","MEDIUM"],
+  ["RISK-010","운영 환경에 중앙 집중형 로그 관리 또는 SIEM 부재","모든 운영 VM","위협 탐지 지연","MEDIUM"],
+],
+vi:[
+  ["RISK-001","RAM đạt 90-94% trên tất cả host ESXi production — không còn dư địa khi host gặp sự cố","ESXi Production .201/.202/.203","Gián đoạn dịch vụ / VM bị crash khi host gặp sự cố","CRITICAL"],
+  ["RISK-002","Khoảng 54 VM đang chạy CentOS 7 (EOL từ tháng 6/2024) — không còn vá bảo mật","OGS, OTS, AMS, các Gateway, v.v.","Rò rỉ bảo mật, vi phạm tuân thủ","CRITICAL"],
+  ["RISK-003","Cụm UAT đang chạy ESXi 6.0 (Hết hỗ trợ chung từ 2020)","Host UAT .105/.106/.107","Lỗ hổng chưa vá, không đạt tuân thủ","CRITICAL"],
+  ["RISK-004","SSV-TRD-STORAGE cấp phát vượt mức 166% — nguy cơ cạn kiệt pool dung lượng","SSV-TRD-STORAGE (Unity 380)","Mất dữ liệu / hệ thống crash nếu pool đầy","HIGH"],
+  ["RISK-005","Không có cụm VMware HA/DRS — phải chuyển đổi dự phòng thủ công khi host lỗi","Toàn bộ khối lượng công việc production","Kéo dài thời gian downtime khi có sự cố","HIGH"],
+  ["RISK-006","Chỉ có một trung tâm dữ liệu — không có site DR; sự cố tại chỗ sẽ gây gián đoạn toàn bộ","Toàn bộ hạ tầng SHSV","Ngừng giao dịch hoàn toàn","HIGH"],
+  ["RISK-007","Trạng thái bảo mật iLO 5 ở mức 'Risk' trên các máy chủ DB — cần tăng cường firmware","Máy chủ vật lý DB01, DB02","Rủi ro lộ quản lý từ xa","HIGH"],
+  ["RISK-008","Các VM Windows 10 vẫn đang chạy ở môi trường production (EOL tháng 10/2025)","ECONTRACT-UAT, HOSE-PRS, Pro-Lottle PC","Không tuân thủ bảo mật","MEDIUM"],
+  ["RISK-009","UAT vCenter 6.5 đã EOL — không còn cập nhật tính năng hay bảo mật","vCenter 10.22.102.108","Lỗ hổng ở lớp quản lý (management plane)","MEDIUM"],
+  ["RISK-010","Chưa thấy hệ thống quản lý log tập trung hoặc SIEM trong phạm vi production","Toàn bộ VM production","Chậm phát hiện mối đe dọa","MEDIUM"],
+],
+};
+
+/* ---- action plan (per language) ---- */
+const recsData={
+en:[
   {phase:1,label:"Immediate — within 30 days",items:[
     {n:1,t:"Relieve production memory pressure",p:"CRITICAL",owner:"SHSV IT + Tech Valley",eff:"High effort",
       why:"All 3 trading hosts run 90–94% RAM with no failover host. Add 2 ESXi hosts (N+1) or migrate workloads to a new data centre so a single host failure can't take trading offline."},
@@ -504,7 +1018,64 @@ const recs=[
     {n:10,t:"Deploy centralized logging / SIEM",p:"MEDIUM",owner:"SHSV IT",eff:"Project",
       why:"No visible central log management in production. A SIEM improves threat detection and supports financial-services compliance."},
   ]},
-];
+],
+ko:[
+  {phase:1,label:"즉시 조치 — 30일 이내",items:[
+    {n:1,t:"운영 환경 메모리 압박 해소",p:"CRITICAL",owner:"SHSV IT + Tech Valley",eff:"높은 노력",
+      why:"3대의 트레이딩 호스트 모두 RAM 90–94%로 운영 중이며 페일오버용 여유 호스트가 없습니다. ESXi 호스트 2대를 추가(N+1)하거나 신규 데이터센터로 워크로드를 이전하여 단일 호스트 장애가 트레이딩 중단으로 이어지지 않도록 해야 합니다."},
+    {n:2,t:"CentOS 7 마이그레이션 착수(약 54대)",p:"CRITICAL",owner:"SHSV IT",eff:"단계적 진행",
+      why:"CentOS 7은 2024년 6월 지원이 종료되어 보안 패치가 제공되지 않습니다. 인터넷에 노출된 게이트웨이와 트레이딩 시스템부터 Oracle Linux 8 또는 RHEL 9로 마이그레이션해야 합니다."},
+    {n:3,t:"UAT 클러스터 ESXi 8.0으로 업그레이드",p:"CRITICAL",owner:"SHSV IT + Tech Valley",eff:"중간",
+      why:"UAT 호스트는 2020년에 일반 지원이 종료된 ESXi 6.0을 사용 중입니다. 패치 및 컴플라이언스 격차를 해소하기 위해 ESXi 8.0으로 업그레이드해야 합니다."},
+    {n:4,t:"트레이딩 스토리지(SSV-TRD-STORAGE) 확장",p:"HIGH",owner:"SHSV IT",eff:"중간",
+      why:"스토리지 배열이 166% 과다 할당되어 있습니다. 풀이 고갈되기 전에 물리 용량을 확장하거나 압축/티어링을 활성화해야 합니다."},
+  ]},
+  {phase:2,label:"단기 — 30~90일",items:[
+    {n:5,t:"vSphere HA/DRS 클러스터 구축",p:"HIGH",owner:"SHSV IT + Tech Valley",eff:"중간",
+      why:"현재 클러스터 HA가 없어 페일오버가 수동으로 이루어집니다. HA/DRS를 구성하면 호스트 장애 시 자동 복구가 가능합니다."},
+    {n:6,t:"DB01/DB02 iLO 5 펌웨어 강화",p:"HIGH",owner:"SHSV IT",eff:"낮음",
+      why:"두 데이터베이스 서버의 iLO 관리 상태가 보안 'Risk'로 표시됩니다. 펌웨어를 업데이트하고 강화 조치를 적용하여 원격 관리 노출을 줄여야 합니다."},
+    {n:7,t:"운영 환경 Windows 10 VM 폐기",p:"MEDIUM",owner:"SHSV IT",eff:"낮음",
+      why:"Windows 10은 2025년 10월 지원이 종료되었습니다. 컴플라이언스 회복을 위해 Windows 11 또는 Server로 교체해야 합니다."},
+    {n:8,t:"UAT vCenter 6.5 업그레이드",p:"MEDIUM",owner:"SHSV IT",eff:"낮음",
+      why:"vCenter 6.5는 EOL 상태로 관리 플레인에 대한 보안 패치가 제공되지 않습니다. UAT ESXi 8.0 작업과 함께 업그레이드해야 합니다."},
+  ]},
+  {phase:3,label:"전략 과제 — 복원력 강화",items:[
+    {n:9,t:"재해복구(DR) 사이트 구축",p:"HIGH",owner:"SHSV IT + Tech Valley",eff:"프로젝트",
+      why:"단일 데이터센터 구조에서는 시설 장애 발생 시 트레이딩이 전면 중단됩니다. 핵심 트레이딩 시스템에 대한 복제를 포함한 하이브리드 클라우드 DR(AWS 또는 FPT Cloud)을 구축해야 합니다."},
+    {n:10,t:"중앙 로그 관리 / SIEM 도입",p:"MEDIUM",owner:"SHSV IT",eff:"프로젝트",
+      why:"운영 환경에 중앙 집중형 로그 관리가 보이지 않습니다. SIEM 도입으로 위협 탐지를 개선하고 금융업 컴플라이언스를 지원할 수 있습니다."},
+  ]},
+],
+vi:[
+  {phase:1,label:"Ngay lập tức — trong vòng 30 ngày",items:[
+    {n:1,t:"Giảm áp lực bộ nhớ ở môi trường production",p:"CRITICAL",owner:"SHSV IT + Tech Valley",eff:"Nỗ lực cao",
+      why:"Cả 3 host trading đều chạy ở mức RAM 90–94% và không có host dự phòng. Cần bổ sung 2 host ESXi (N+1) hoặc di chuyển khối lượng công việc sang trung tâm dữ liệu mới để một sự cố host không làm gián đoạn giao dịch."},
+    {n:2,t:"Bắt đầu di chuyển CentOS 7 (~54 máy chủ)",p:"CRITICAL",owner:"SHSV IT",eff:"Theo giai đoạn",
+      why:"CentOS 7 đã hết hỗ trợ từ tháng 6/2024 — không còn bản vá bảo mật. Cần di chuyển sang Oracle Linux 8 hoặc RHEL 9, bắt đầu từ các gateway hướng internet và hệ thống giao dịch."},
+    {n:3,t:"Nâng cấp cụm UAT lên ESXi 8.0",p:"CRITICAL",owner:"SHSV IT + Tech Valley",eff:"Trung bình",
+      why:"Các host UAT đang chạy ESXi 6.0 — đã hết hỗ trợ chung từ năm 2020. Cần nâng cấp lên ESXi 8.0 để khắc phục khoảng trống về vá lỗi và tuân thủ."},
+    {n:4,t:"Mở rộng dung lượng lưu trữ giao dịch (SSV-TRD-STORAGE)",p:"HIGH",owner:"SHSV IT",eff:"Trung bình",
+      why:"Mảng lưu trữ đang bị cấp phát vượt mức 166%. Cần mở rộng dung lượng vật lý hoặc bật nén/phân tầng trước khi pool cạn kiệt."},
+  ]},
+  {phase:2,label:"Ngắn hạn — 30 đến 90 ngày",items:[
+    {n:5,t:"Triển khai cụm vSphere HA / DRS",p:"HIGH",owner:"SHSV IT + Tech Valley",eff:"Trung bình",
+      why:"Hiện chưa có HA cấp cụm nên việc chuyển đổi dự phòng phải thực hiện thủ công. Cấu hình HA/DRS sẽ cho phép tự động khôi phục khi host gặp sự cố."},
+    {n:6,t:"Tăng cường firmware iLO 5 trên DB01 / DB02",p:"HIGH",owner:"SHSV IT",eff:"Thấp",
+      why:"Trạng thái quản lý iLO trên cả hai máy chủ cơ sở dữ liệu đang ở mức cảnh báo bảo mật 'Risk'. Cần cập nhật firmware và áp dụng các biện pháp tăng cường để giảm rủi ro lộ quản lý từ xa."},
+    {n:7,t:"Ngừng sử dụng các VM Windows 10 production",p:"MEDIUM",owner:"SHSV IT",eff:"Thấp",
+      why:"Windows 10 đã hết hỗ trợ từ tháng 10/2025. Cần thay thế bằng Windows 11 / Server để khôi phục tuân thủ."},
+    {n:8,t:"Nâng cấp UAT vCenter 6.5",p:"MEDIUM",owner:"SHSV IT",eff:"Thấp",
+      why:"vCenter 6.5 đã EOL — không còn bản vá bảo mật cho lớp quản lý. Nên nâng cấp cùng với việc nâng cấp ESXi 8.0 cho UAT."},
+  ]},
+  {phase:3,label:"Chiến lược — xây dựng khả năng phục hồi",items:[
+    {n:9,t:"Xây dựng site khắc phục thảm họa (DR)",p:"HIGH",owner:"SHSV IT + Tech Valley",eff:"Dự án",
+      why:"Chỉ có một trung tâm dữ liệu nghĩa là bất kỳ sự cố nào ở cấp cơ sở vật chất cũng sẽ làm ngừng giao dịch. Cần xây dựng DR hybrid-cloud (AWS hoặc FPT Cloud) có nhân bản dữ liệu cho các hệ thống giao dịch trọng yếu."},
+    {n:10,t:"Triển khai quản lý log tập trung / SIEM",p:"MEDIUM",owner:"SHSV IT",eff:"Dự án",
+      why:"Chưa thấy hệ thống quản lý log tập trung ở môi trường production. Một SIEM sẽ cải thiện khả năng phát hiện mối đe dọa và hỗ trợ tuân thủ trong lĩnh vực tài chính."},
+  ]},
+],
+};
 
 /* ================= HELPERS ================= */
 const $=s=>document.querySelector(s);
@@ -512,13 +1083,13 @@ const getVar=n=>getComputedStyle(document.documentElement).getPropertyValue(n).t
 const ramColor=v=>v>=90?getVar('--crit'):v>=75?getVar('--high'):getVar('--ok');
 const cpuColor=v=>v>=75?getVar('--high'):getVar('--ok');
 const osClass=os=>eolOS.some(e=>os.includes(e))?'os eol':'os';
-const critBadge=c=>c==='CRITICAL'?'<span class="badge b-crit">CRITICAL</span>':c==='HIGH'?'<span class="badge b-high">HIGH</span>':'<span class="muted">—</span>';
-const prioBadge=p=>p==='CRITICAL'?'<span class="badge b-crit">CRITICAL</span>':p==='HIGH'?'<span class="badge b-high">HIGH</span>':'<span class="badge b-med">MEDIUM</span>';
+const critBadge=c=>c==='CRITICAL'?`<span class="badge b-crit">${t('badge_critical')}</span>`:c==='HIGH'?`<span class="badge b-high">${t('badge_high')}</span>`:'<span class="muted">—</span>';
+const prioBadge=p=>p==='CRITICAL'?`<span class="badge b-crit">${t('badge_critical')}</span>`:p==='HIGH'?`<span class="badge b-high">${t('badge_high')}</span>`:`<span class="badge b-med">${t('badge_medium')}</span>`;
 function statusPill(color,label){return `<span class="status"><span class="d" style="background:${color}"></span>${label}</span>`;}
 
 /* ================= TABLES ================= */
 function hostRow(x,eol){
-  const st=eol?statusPill(getVar('--crit'),'Unsupported'):(x.ru>=90?statusPill(getVar('--crit'),'Memory critical'):statusPill(getVar('--ok'),'Healthy'));
+  const st=eol?statusPill(getVar('--crit'),t('st_unsupported')):(x.ru>=90?statusPill(getVar('--crit'),t('st_memcrit')):statusPill(getVar('--ok'),t('st_healthy')));
   return `<tr><td><b>${x.h}</b></td><td>${x.cpu}</td>
     <td>${eol?'<span class="badge b-crit">'+x.esxi+'</span>':x.esxi}</td>
     <td>${x.cu}%<div class="bar"><i style="width:${x.cu}%;background:${cpuColor(x.cu)}"></i></div></td>
@@ -529,35 +1100,39 @@ function drawHosts(){
   $('#prodHosts').innerHTML=prodHosts.map(x=>hostRow(x,false)).join('');
   $('#uatHosts').innerHTML=uatHosts.map(x=>hostRow(x,true)).join('');
 }
-$('#dbHosts').innerHTML=dbHosts.map(x=>`<tr><td><b>${x.n}</b></td><td>${x.m}</td><td>${x.cpu}</td><td>${x.ram}</td><td>${x.mg}</td><td><span class="badge b-high">Hardening recommended</span></td></tr>`).join('');
-$('#dbTable').innerHTML=dbs.map(d=>`<tr><td><b>${d.n}</b></td><td>${d.v}</td><td>${d.inf}</td><td>${d.w}</td><td>${d.s==='ok'?'<span class="badge b-ok">OK</span>':'<span class="badge b-high">RISK</span>'}</td></tr>`).join('');
+function renderDbTables(){
+  $('#dbHosts').innerHTML=dbHosts.map(x=>`<tr><td><b>${x.n}</b></td><td>${x.m}</td><td>${x.cpu}</td><td>${x.ram}</td><td>${x.mg}</td><td><span class="badge b-high">${t('badge_hardening')}</span></td></tr>`).join('');
+  $('#dbTable').innerHTML=dbsData[LANG].map(d=>`<tr><td><b>${d.n}</b></td><td>${d.v}</td><td>${d.inf}</td><td>${d.w}</td><td>${d.s==='ok'?`<span class="badge b-ok">${t('badge_ok')}</span>`:`<span class="badge b-high">${t('badge_risk')}</span>`}</td></tr>`).join('');
+}
 
 function renderApps(){
   if(!$('#appTable'))return;
+  const list=apps();
   const q=$('#appSearch').value.toLowerCase(),cat=$('#catFilter').value,cr=$('#critFilter').value;
-  const rows=apps.filter(a=>(a[0]+a[1]+a[2]+a[5]).toLowerCase().includes(q)&&(!cat||a[1]===cat)&&(!cr||a[4]===cr));
-  $('#appTable').innerHTML=rows.map(a=>`<tr><td><b>${a[0]}</b></td><td class="muted">${a[1]}</td><td><span class="${osClass(a[2])}">${a[2]}</span></td><td>${a[3]}</td><td>${critBadge(a[4])}</td><td>${a[5]}</td></tr>`).join('')||`<tr><td colspan="6" class="muted" style="text-align:center;padding:22px">No matching applications.</td></tr>`;
-  $('#appCount').textContent=`${rows.length} of ${apps.length} entries`;
+  const rows=list.filter(a=>(a[0]+a[1]+a[2]+a[5]).toLowerCase().includes(q)&&(!cat||a[6]===cat)&&(!cr||a[4]===cr));
+  $('#appTable').innerHTML=rows.map(a=>`<tr><td><b>${a[0]}</b></td><td class="muted">${a[1]}</td><td><span class="${osClass(a[2])}">${a[2]}</span></td><td>${a[3]}</td><td>${critBadge(a[4])}</td><td>${a[5]}</td></tr>`).join('')||`<tr><td colspan="6" class="muted" style="text-align:center;padding:22px">${t('ap_nomatch')}</td></tr>`;
+  $('#appCount').textContent=t('ap_count_tpl').replace('{n}',rows.length).replace('{t}',list.length);
 }
 ['appSearch','catFilter','critFilter'].forEach(id=>$('#'+id).addEventListener('input',renderApps));
-renderApps();
 
 function renderRisks(){
-  const p=$('#riskFilter').value,rows=risks.filter(r=>!p||r[4]===p);
+  const list=risksData[LANG];
+  const p=$('#riskFilter').value,rows=list.filter(r=>!p||r[4]===p);
   $('#riskTable').innerHTML=rows.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${prioBadge(r[4])}</td></tr>`).join('');
-  $('#riskCount').textContent=`${rows.length} of ${risks.length} risks`;
+  $('#riskCount').textContent=t('rk_count_tpl').replace('{n}',rows.length).replace('{t}',list.length);
 }
 $('#riskFilter').addEventListener('input',renderRisks);
-renderRisks();
 
-$('#recs').innerHTML=recs.map(g=>`
-  <div class="phase"><span class="n">${g.phase}</span>${g.label}</div>
-  ${g.items.map(it=>`<div class="rec p-${it.p.toLowerCase()}">
-    <div class="top"><div><span class="num">${it.n}.</span><h4>${it.t}</h4></div>${prioBadge(it.p)}</div>
-    <div class="why">${it.why}</div>
-    <div class="meta"><span class="tagsm">Owner: ${it.owner}</span><span class="tagsm">Effort: ${it.eff}</span></div>
-  </div>`).join('')}
-`).join('');
+function renderRecs(){
+  $('#recs').innerHTML=recsData[LANG].map(g=>`
+    <div class="phase"><span class="n">${g.phase}</span>${g.label}</div>
+    ${g.items.map(it=>`<div class="rec p-${it.p.toLowerCase()}">
+      <div class="top"><div><span class="num">${it.n}.</span><h4>${it.t}</h4></div>${prioBadge(it.p)}</div>
+      <div class="why">${it.why}</div>
+      <div class="meta"><span class="tagsm">${t('ac_owner')} ${it.owner}</span><span class="tagsm">${t('ac_effort')} ${it.eff}</span></div>
+    </div>`).join('')}
+  `).join('');
+}
 
 /* ================= NAV / SIDEBAR ================= */
 document.querySelectorAll('#nav button').forEach(b=>b.addEventListener('click',()=>{
@@ -567,6 +1142,21 @@ document.querySelectorAll('#nav button').forEach(b=>b.addEventListener('click',(
   window.scrollTo({top:0,behavior:'smooth'});
 }));
 function toggleSidebar(){document.getElementById('shell').classList.toggle('collapsed');}
+
+/* ================= LANGUAGE ================= */
+document.querySelectorAll('#langSwitch button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+function setLang(lang){
+  LANG=lang;
+  document.querySelectorAll('#langSwitch button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  applyI18n();
+  updateThemeBtnText();
+  drawHosts();
+  renderDbTables();
+  renderApps();
+  renderRisks();
+  renderRecs();
+  buildCharts();
+}
 
 /* ================= CHARTS ================= */
 let charts=[];
@@ -587,20 +1177,20 @@ function buildCharts(){
     options:{cutout:'78%',rotation:-90,circumference:360,plugins:{legend:{display:false},tooltip:{enabled:false},datalabels:{display:false}},events:[]}});
 
   const riskDonut=()=>({type:'doughnut',
-    data:{labels:['Critical','High','Medium'],datasets:[{data:[3,4,3],backgroundColor:[CRIT,HIGH,MED],borderWidth:2,borderColor:CARD}]},
+    data:{labels:[t('ch_critical'),t('ch_high'),t('ch_medium')],datasets:[{data:[3,4,3],backgroundColor:[CRIT,HIGH,MED],borderWidth:2,borderColor:CARD}]},
     options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'bottom'},
       datalabels:{display:true,...dlWhite,formatter:v=>v}}}});
   mk('#riskChart',riskDonut());
   mk('#riskTabChart',riskDonut());
 
   mk('#riskThemeChart',{type:'bar',
-    data:{labels:['Capacity','Lifecycle / EOL','Resilience','Security'],
+    data:{labels:[t('rk_theme_capacity'),t('rk_theme_lifecycle'),t('rk_theme_resilience'),t('rk_theme_security')],
       datasets:[{data:[2,3,2,3],backgroundColor:[HIGH,CRIT,NAVY,BLUE]}]},
     options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{beginAtZero:true,ticks:{stepSize:1}}},
       plugins:{legend:{display:false},datalabels:{display:true,...dlDark,formatter:v=>v}}}});
 
   mk('#osChart',{type:'doughnut',
-    data:{labels:['Supported','End-of-life (no patches)'],datasets:[{data:[92,68],backgroundColor:[OK,CRIT],borderWidth:2,borderColor:CARD}]},
+    data:{labels:[t('ch_supported'),t('ch_eol')],datasets:[{data:[92,68],backgroundColor:[OK,CRIT],borderWidth:2,borderColor:CARD}]},
     options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'bottom'},
       datalabels:{display:true,...dlWhite,formatter:(v)=>v+'\n('+Math.round(v/160*100)+'%)',textAlign:'center'}}}});
 
@@ -608,17 +1198,17 @@ function buildCharts(){
     data:{labels:['Prod .201','Prod .202','Prod .203','UAT .105','UAT .106','UAT .107'],
       datasets:[{data:[94,94,90,93,93,95],backgroundColor:[CRIT,CRIT,HIGH,CRIT,CRIT,CRIT]}]},
     options:{responsive:true,maintainAspectRatio:false,scales:{y:{beginAtZero:true,max:100,ticks:{callback:v=>v+'%'}}},
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'% memory used'}},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+t('ch_pctmemused')}},
         datalabels:{display:true,color:'#fff',font:{weight:'bold',size:12},formatter:v=>v+'%'}}}});
 
   const subCfg=()=>({type:'bar',
-    data:{labels:['DB storage','Trading storage'],datasets:[
-      {label:'Subscribed',data:[33,166],backgroundColor:[OK,CRIT]},
-      {label:'Physical limit (100%)',data:[100,100],backgroundColor:'rgba(0,0,0,0)',
+    data:{labels:[t('ch_dbstorage'),t('ch_tradingstorage')],datasets:[
+      {label:t('ch_subscribed'),data:[33,166],backgroundColor:[OK,CRIT]},
+      {label:t('ch_physlimit'),data:[100,100],backgroundColor:'rgba(0,0,0,0)',
         borderColor:MUT,borderWidth:{top:2,right:0,bottom:0,left:0},type:'line',stepped:true,pointRadius:0,datalabels:{display:false}}
     ]},
     options:{responsive:true,maintainAspectRatio:false,scales:{y:{beginAtZero:true,suggestedMax:180,ticks:{callback:v=>v+'%'}}},
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'% subscribed'}},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+t('ch_pctsubscribed')}},
         datalabels:{display:ctx=>ctx.datasetIndex===0,color:'#fff',font:{weight:'bold',size:13},formatter:v=>v+'%'}}}});
   mk('#subChart',subCfg());
   mk('#subChart2',subCfg());
@@ -628,9 +1218,9 @@ function buildCharts(){
   mk('#memChart',{type:'bar',
     data:{labels:hostsAll.map(h=>h.h.replace(' (',' ').replace(')','')),
       datasets:[
-        {label:'Used',data:hostsAll.map(usedGB),backgroundColor:CRIT,
+        {label:t('ch_used'),data:hostsAll.map(usedGB),backgroundColor:CRIT,
           datalabels:{display:true,color:'#fff',font:{weight:'bold',size:11},formatter:v=>v+'GB'}},
-        {label:'Free',data:hostsAll.map(freeGB),backgroundColor:LINE,
+        {label:t('ch_free'),data:hostsAll.map(freeGB),backgroundColor:LINE,
           datalabels:{display:true,color:MUT,font:{weight:'bold',size:10},formatter:v=>v+'GB'}}
       ]},
     options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{stacked:true,beginAtZero:true,title:{display:true,text:'GB'}},y:{stacked:true}},
@@ -643,37 +1233,42 @@ function buildCharts(){
       plugins:{legend:{display:false},datalabels:{display:true,...dlDark,formatter:v=>v}}}});
 
   mk('#capChart',{type:'bar',
-    data:{labels:['DB storage','Trading storage'],datasets:[
-      {label:'Used',data:[3.5,11.1],backgroundColor:[OK,HIGH],
+    data:{labels:[t('ch_dbstorage'),t('ch_tradingstorage')],datasets:[
+      {label:t('ch_used'),data:[3.5,11.1],backgroundColor:[OK,HIGH],
         datalabels:{display:true,color:'#fff',font:{weight:'bold',size:12},formatter:v=>v+' TB'}},
-      {label:'Free',data:[12.8,5.2],backgroundColor:LINE,
+      {label:t('ch_free'),data:[12.8,5.2],backgroundColor:LINE,
         datalabels:{display:true,color:MUT,font:{weight:'bold',size:11},formatter:v=>v+' TB'}}
     ]},
     options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{stacked:true,beginAtZero:true,title:{display:true,text:'TB'}},y:{stacked:true}},
       plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.x+' TB'}}}}});
 
-  const cc={};apps.forEach(a=>cc[a[1]]=(cc[a[1]]||0)+1);
+  const appList=apps();
+  const cc={};appList.forEach(a=>cc[a[1]]=(cc[a[1]]||0)+1);
   mk('#appAreaChart',{type:'bar',
     data:{labels:Object.keys(cc),datasets:[{data:Object.values(cc),backgroundColor:[CRIT,BLUE,NAVY,MED]}]},
     options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{beginAtZero:true}},
       plugins:{legend:{display:false},datalabels:{display:true,...dlDark,formatter:v=>v}}}});
 
-  const crit=apps.filter(a=>a[4]==='CRITICAL').length,high=apps.filter(a=>a[4]==='HIGH').length,std=apps.length-crit-high;
+  const crit=appList.filter(a=>a[4]==='CRITICAL').length,high=appList.filter(a=>a[4]==='HIGH').length,std=appList.length-crit-high;
   mk('#appCritChart',{type:'doughnut',
-    data:{labels:['Critical','High','Standard'],datasets:[{data:[crit,high,std],backgroundColor:[CRIT,HIGH,BLUE],borderWidth:2,borderColor:CARD}]},
+    data:{labels:[t('ch_critical'),t('ch_high'),t('ch_standard')],datasets:[{data:[crit,high,std],backgroundColor:[CRIT,HIGH,BLUE],borderWidth:2,borderColor:CARD}]},
     options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'bottom'},
       datalabels:{display:true,...dlWhite,formatter:v=>v}}}});
 }
 
 /* ================= THEME ================= */
+function updateThemeBtnText(){
+  const isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  $('#themeBtn').textContent=isDark?t('btn_light'):t('btn_dark');
+}
 function toggleTheme(){
   const h=document.documentElement,dark=h.getAttribute('data-theme')==='dark';
   h.setAttribute('data-theme',dark?'light':'dark');
-  $('#themeBtn').textContent=dark?'Dark mode':'Light mode';
+  updateThemeBtnText();
   drawHosts();buildCharts();
 }
 
-drawHosts();buildCharts();
+setLang('en');
 </script>
 </body>
 </html>
